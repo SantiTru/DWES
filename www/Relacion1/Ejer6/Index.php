@@ -6,8 +6,8 @@
   </head>
   <body>
     <?php
-      echo ("
-        ");  
-      ?>
+      $nombre = "Santiago Trujillo Navarro";
+      echo "$nombre";
+    ?>
   </body>
  </html>
