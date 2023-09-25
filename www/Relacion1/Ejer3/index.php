@@ -7,7 +7,7 @@
   <body>
     <?php
       echo ("
-      <table>
+      <table border=1>
         <tr>
             <th>Español</th>
             <th>Inglés</th>
