@@ -5,9 +5,18 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <?php
-      echo ("
-        ");  
-      ?>
+  <body>
+  
+  <h1 text-align: center>CONVERSOR MONEDA EURO - DOLAR</h1>
+  
+  <?php
+  
+    $cantidad = 88;
+    $total = $cantidad * 0.94;
+  
+    echo "El resultado de convertir <strong>$cantidad dólares</strong> a euros es de <strong>$total euros</strong>.";
+  
+  ?>
+  </body>
   </body>
  </html>
