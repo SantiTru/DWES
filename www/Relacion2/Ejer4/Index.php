@@ -8,7 +8,7 @@
       Introduce dos número de tu elección que vamos a sumar, restar, multiplicar y dividir
       <br>
       <br>
-      <form action="Multiplica.php" method="post">
+      <form action="Calculadora.php" method="post">
         <input type="text" name="numero1"><br>
         <br>
         <input type="text" name="numero2"><br>
