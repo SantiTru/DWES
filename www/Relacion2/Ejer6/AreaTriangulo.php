@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Relacion 2 Ejer 5</title>
+    <title>Relacion 2 Ejer 6</title>
     <meta charset="UTF-8" />
   </head>
   <body>
