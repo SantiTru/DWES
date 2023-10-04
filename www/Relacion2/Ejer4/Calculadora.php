@@ -1,71 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Relacion 2 Ejer 4</title>
-    <meta charset="UTF-8" />
-  </head>
-  <body>
-      Hola, la suma de 
-      
-      <?=$_POST["numero1"]?> 
 
-      más 
+<head>
+  <title>Relacion 2 Ejer 4</title>
+  <meta charset="UTF-8" />
+</head>
 
-      <?=$_POST["numero2"]?> 
+<body>
+  Hola, la suma de
 
-      es: 
+  <?= $_POST["numero1"] ?>
 
-      <?php echo $_POST["numero1"] + $_POST["numero2"]; ?>. 
+  más
 
-      <br>
-      <br>
+  <?= $_POST["numero2"] ?>
 
-      la resta de 
-      
-      <?=$_POST["numero1"]?> 
+  es:
 
-      menos 
+  <?php echo $_POST["numero1"] + $_POST["numero2"]; ?>.
 
-      <?=$_POST["numero2"]?> 
+  <br>
+  <br>
 
-      es: 
+  la resta de
 
-      <?php echo $_POST["numero1"] - $_POST["numero2"]; ?>. 
+  <?= $_POST["numero1"] ?>
 
-      <br>
-      <br>
+  menos
 
-      la multiplicación de 
-      
-      <?=$_POST["numero1"]?> 
+  <?= $_POST["numero2"] ?>
 
-      por 
+  es:
 
-      <?=$_POST["numero2"]?> 
+  <?php echo $_POST["numero1"] - $_POST["numero2"]; ?>.
 
-      es: 
+  <br>
+  <br>
 
-      <?php echo $_POST["numero1"] * $_POST["numero2"]; ?>. 
+  la multiplicación de
 
-      <br>
-      <br>
+  <?= $_POST["numero1"] ?>
 
-      la división de 
+  por
 
-      <?=$_POST["numero1"]?> 
+  <?= $_POST["numero2"] ?>
 
-      entre 
+  es:
 
-      <?=$_POST["numero2"]?> 
+  <?php echo $_POST["numero1"] * $_POST["numero2"]; ?>.
 
-      es: 
+  <br>
+  <br>
 
-      <?php echo $_POST["numero1"] / $_POST["numero2"]; ?>. 
+  la división de
 
-      <br>
-      <br>
+  <?= $_POST["numero1"] ?>
 
-      Que tengas un buenisimo día.
-  
-  </body>
- </html>
+  entre
+
+  <?= $_POST["numero2"] ?>
+
+  es:
+
+  <?php echo $_POST["numero1"] / $_POST["numero2"]; ?>.
+
+  <br>
+  <br>
+
+  Que tengas un buenisimo día.
+
+</body>
+
+</html>

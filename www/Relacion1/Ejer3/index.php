@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Ejercicio 3 Relación 1</title>
     <meta charset="UTF-8" />
-  </head>
-  <body>
+</head>
+
+<body>
     <?php
-      echo ("
+    echo ("
       <table border=1>
         <tr>
             <th>Español</th>
@@ -54,5 +56,6 @@
         </tr>
       </table>");
     ?>
-  </body>
- </html>
+</body>
+
+</html>

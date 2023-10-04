@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Relacion 2 Ejer 1</title>
-    <meta charset="UTF-8" />
-  </head>
-  <body>
-      Hola, la multiplicación de 
-      
-      <?=$_POST["numero1"]?> 
 
-      por 
+<head>
+  <title>Relacion 2 Ejer 1</title>
+  <meta charset="UTF-8" />
+</head>
 
-      <?=$_POST["numero2"]?> 
+<body>
+  Hola, la multiplicación de
 
-      es: 
+  <?= $_POST["numero1"] ?>
 
-      <?php echo $_POST["numero1"] * $_POST["numero2"]; ?>. 
+  por
 
-      Que tengas un buenisimo día.
-  
-  </body>
- </html>
+  <?= $_POST["numero2"] ?>
+
+  es:
+
+  <?php echo $_POST["numero1"] * $_POST["numero2"]; ?>.
+
+  Que tengas un buenisimo día.
+
+</body>
+
+</html>

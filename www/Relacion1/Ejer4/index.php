@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Ejercicio 4 Relación 1</title>
-    <meta charset="UTF-8" />
-  </head>
-  <body>
-    <?php
-      echo ("
+
+<head>
+  <title>Ejercicio 4 Relación 1</title>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <?php
+  echo ("
     <table border=2 align=center\>
       <tr>
         <th style = \"font-size: 15px; background-color: #FEB89C;\">HORA</th>
@@ -73,7 +75,8 @@
         <th style =\"color : pink; font-size:   15px\">HLC</th>  
       </tr>
      
-    </table>");  
-    ?>
-  </body>
- </html>
+    </table>");
+  ?>
+</body>
+
+</html>
