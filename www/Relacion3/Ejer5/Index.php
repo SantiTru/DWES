@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Relacion 3 Ejer 5</title>
-    <meta charset="UTF-8" />
-  </head>
-  <body>
-      Vamos a resolver una ecuación de primer grado:
-      <br>
-      <br>
-      <form action="Salario.php" method="get">
-        <input type="number" name="horas"><br>
-        <br>
-        <input type="submit" value="Enviar">
-      </form>
-  
-  </body>
- </html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+</head>
+<body>
+
+<form action="Ej5.php" method="get">
+  Introduce el valor de a:
+  <input type="number" name="a"><br>
+  Introduce el valor de b:
+  <input type="number" name="b"><br>
+  <input type="submit" value="Enviar">
+</form>
+</body>
+</html>
