@@ -43,23 +43,23 @@
       <h3>Vamos a mostrar 20 números aleatorios y los cuadrados y cubos de estos números</h3>
 
       <?php
-      $numeros = array();
-      $cuadrados = array();
-      $cubos = array();
+      $numero = array();
+      $cuadrado = array();
+      $cubo = array();
 
       for ($i = 0; $i < 20; $i++) {
-        $numeros[$i] = rand(1, 100);
-        $cuadrados[$i] = pow($numeros[$i], 2);
-        $cubos[$i] = pow($numeros[$i], 3);
+        $numero[$i] = rand(1, 100);
+        $cuadrado[$i] = pow($numero[$i], 2);
+        $cubo[$i] = pow($numero[$i], 3);
       }
 
       echo "<table border=1 aling=center>";
       echo "<tr><th>Número</th><th>Cuadrado</th><th>Cubo</th></tr>";
       for ($i = 0; $i < 20; $i++) {
         echo "<tr>";
-        echo "<td>" . $numeros[$i] . "</td>";
-        echo "<td>" . $cuadrados[$i] . "</td>";
-        echo "<td>" . $cubos[$i] . "</td>";
+        echo "<td>" . $numero[$i] . "</td>";
+        echo "<td>" . $cuadrado[$i] . "</td>";
+        echo "<td>" . $cubo[$i] . "</td>";
         echo "</tr>";
       }
       echo "</table>";
