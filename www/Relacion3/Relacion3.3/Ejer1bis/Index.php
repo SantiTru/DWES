@@ -43,27 +43,32 @@
       <h3>Vamos a mostrar 20 números aleatorios y los cuadrados y cubos de estos números</h3>
 
       <?php
-      $numero = array();
-      $cuadrado = array();
-      $cubo = array();
+$datos = array();
 
-      for ($i = 0; $i < 20; $i++) {
-        $numero[$i] = rand(1, 100);
-        $cuadrado[$i] = pow($numero[$i], 2);
-        $cubo[$i] = pow($numero[$i], 3);
-      }
+for ($i = 0; $i < 20; $i++) {
+    $numero = rand(1, 100);
+    $cuadrado = pow($numero, 2);
+    $cubo = pow($numero, 3);
+    
+    $datos[] = array(
+        'numero' => $numero,
+        'cuadrado' => $cuadrado,
+        'cubo' => $cubo
+    );
+}
 
-      echo "<table border=1 aling=center>";
-      echo "<tr><th>Número</th><th>Cuadrado</th><th>Cubo</th></tr>";
-      for ($i = 0; $i < 20; $i++) {
-        echo "<tr>";
-        echo "<td>" . $numero[$i] . "</td>";
-        echo "<td>" . $cuadrado[$i] . "</td>";
-        echo "<td>" . $cubo[$i] . "</td>";
-        echo "</tr>";
-      }
-      echo "</table>";
-      ?>
+echo "<table border=1 align=center>";
+echo "<tr><th>Número</th><th>Cuadrado</th><th>Cubo</th></tr>";
+foreach ($datos as $dato) {
+    echo "<tr>";
+    echo "<td>" . $dato['numero'] . "</td>";
+    echo "<td>" . $dato['cuadrado'] . "</td>";
+    echo "<td>" . $dato['cubo'] . "</td>";
+    echo "</tr>";
+}
+echo "</table>";
+?>
+
  
     </div>
   </div>
