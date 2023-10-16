@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Relacion 3.2 Ejer 8</title>
+  <title>Ejercicio con array asociativos</title>
   <style>
     .contenedorpadre {
       position: relative;
