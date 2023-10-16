@@ -48,9 +48,9 @@
       for ($i = 0; $i < 15; $i++) {
         $array1[$i] = rand(0, 100);
       }
-      $array2[14] = $array1[0];
-      for ($i = 0; $i < 14; $i++) {
-        $array2[$i] = $array1[$i + 1];
+      $array2[0] = $array1[14];
+      for ($i = 0; $i <= 13; $i++) {
+        $array2[$i +1] = $array1[$i];
       }
       echo "Este es el primer array: ";
       for($i = 0; $i < 15; $i++) {
