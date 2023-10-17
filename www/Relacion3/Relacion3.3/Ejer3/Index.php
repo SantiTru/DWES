@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +35,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="contenedorpadre">
     <div class="contenedorhijo">
@@ -50,20 +52,21 @@
       }
       $array2[0] = $array1[14];
       for ($i = 0; $i <= 13; $i++) {
-        $array2[$i +1] = $array1[$i];
+        $array2[$i + 1] = $array1[$i];
       }
       echo "Este es el primer array: ";
-      for($i = 0; $i < 15; $i++) {
+      for ($i = 0; $i < 15; $i++) {
         echo $array1[$i] . " ";
       }
       echo "<br>";
       echo "<br>";
       echo "Esta es el segundo array con los números corridos un lugar: ";
-      for($i = 0; $i < 15; $i++) {
-      echo $array2[$i] . " ";
+      for ($i = 0; $i < 15; $i++) {
+        echo $array2[$i] . " ";
       }
       ?>
     </div>
   </div>
 </body>
+
 </html>
