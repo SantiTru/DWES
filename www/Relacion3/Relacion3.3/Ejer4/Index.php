@@ -4,7 +4,7 @@ continuación cambiará todas las ocurrencias del primer valor por el segundo en
 generada anteriormente. -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -40,24 +40,15 @@ generada anteriormente. -->
     }
   </style>
 </head>
-<?php $numeros = array();
 
-for ($i = 0; $i <= 100; $i++) {
-  $numeros[$i] = rand(1, 100);
-}
-?>
 <body>
-<div class="contenedorpadre">
+  <div class="contenedorpadre">
     <div class="contenedorhijo">
-      <br>
       <br>
       <h3>Vamos a mostrar 100 números aleatorios del 0 al 20: </h3>
       <br>
-      <input type= "hidden" name= "numeros" value = <?= $numeros ?>>
-
       <h4>Además vamos a invertir la posición de los 2 números que tu elijas</h4>
       <br>
-
       <form action="Invertir.php" method="post">
         <input type="number" name="num1"><br>
         <br>
