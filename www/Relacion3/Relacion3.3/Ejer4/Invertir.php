@@ -15,7 +15,7 @@ for ($i = 0; $i <= 100; $i++) {
 }
 echo "<br>";
 echo "<br>";
-echo "Array con los numeros pedidos cambiados" . "<br>";
+echo "Array con los números pedidos cambiados" . "<br>";
 echo "<br>";
 
 for ($i = 0; $i <= 100; $i++) {
