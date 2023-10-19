@@ -1,13 +1,21 @@
 <?php
 
-$num1 = $_POST['num1'];
-
-$num2 = $_POST['num2'];
-
-$num3 = $_POST['num3'];
-
-
-
-function esCapicua($num1){
-  
+function esCapicua($n){
+  $reverso = strrev($n);
+  if ($n == $reverso) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function esPrimo($n){
+  for ($i=2; $i < $n; $i++) {
+    if ($n % $i == 0) {
+      return false;
+    }
+  }
+  if (($n == 0) || ($n == 1)){
+    return false;
+  }
+  return true;
 }

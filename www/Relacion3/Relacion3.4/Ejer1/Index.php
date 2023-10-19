@@ -82,22 +82,25 @@ un número y devuelve el trozo correspondiente.
         un número y devuelve el trozo correspondiente.</ul>
       <ul> 14. juntaNumeros: Pega dos números para formar uno</ul>
       <br>
-      <h3>Dime los números para probar las funciones</h3>
+      <h3>Dime que ejercicio quieres probar:</h3>
       <br>
-      <form action="BibliotecaDeFunciones.php" method="post">
-        <span>Dime un número para comprobar las funciones 1, 2, 3, 5, 6 y 14</span>
-        <br>
-        <br>
-        <input type="number" name="num1"><br>
-        <br>
-        <span>Dime dos números para comprobar las funciones 4, 7, 8, 9, 10, 11, 12 y 13</span>
-        <br>
-        <br>
-        <input type="number" name="num2"><br>
-        <br>
-        <input type="number" name="num3"><br>
-        <br>
-        <input type="submit" value="Probar funciones">
+      <form action="Ejer2.php" method="post">
+        <h4>Ejercicio 2</h4>
+        <h5>Muestra los números primos que hay entre 1 y 1000</h5>
+        <input type="submit" value="Probar ejercicio">
+      </form>
+      <form action="Ejer3.php" method="post">
+        <h4>Ejercicio 3</h4> 
+        <h5>Muestra los números capicúa que hay entre 1 y 99999</h5>
+        <input type="submit" value="Probar ejercicio">
+      </form>
+      <form action="Ejer4.php" method="post">
+        <h4>Ejercicio 4</h4>
+        <input type="submit" value="Probar ejercicio">
+      </form>
+      <form action="Ejer5.php" method="post">
+        <h4>Ejercicio 5</h4>
+        <input type="submit" value="Probar ejercicio">
       </form>
 
     </div>
