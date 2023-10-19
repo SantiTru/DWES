@@ -40,7 +40,7 @@ un número y devuelve el trozo correspondiente.
 
     .contenedorhijo {
       width: 800px;
-      height: 1200px;
+      height: 2000px;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -100,6 +100,11 @@ un número y devuelve el trozo correspondiente.
       </form>
       <form action="Ejer5.php" method="post">
         <h4>Ejercicio 5</h4>
+        <input type="submit" value="Probar ejercicio">
+      </form>
+      <form action="SiguientePrimo.php" method="post">
+        <h4>Función siguientePrimo()</h4> 
+        <h5>Te da el siguiente número primo al introducido</h5>
         <input type="submit" value="Probar ejercicio">
       </form>
 
