@@ -7,9 +7,8 @@
 </head>
 
 <body>
-  Dime la hora que es actualmente:
-  <br>
-  <br>
+  <h4>Dime la hora que es actualmente:</h4>
+  <h6>Solo la hora, sin minutos...</h6>
   <form action="Hora.php" method="get">
     <input type="number" name="hora"><br>
     <br>
