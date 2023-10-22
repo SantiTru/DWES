@@ -20,6 +20,7 @@
       left: 50%;
       margin: -25px 0 0 -25px;
       background-color: plum;
+      text-align: center;
     }
   </style>
 </head>
@@ -27,7 +28,7 @@
 <body>
   <div class="contenedorpadre">
     <div class="contenedorhijo">
-      <form action="Ej5.php" method="post">
+      <form action="Ecuacion.php" method="post">
         <br>
         <br>
         Introduce el valor de a:

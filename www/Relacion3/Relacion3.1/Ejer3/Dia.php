@@ -13,28 +13,28 @@
   $dia = $_GET["dia"];
   switch ($dia) {
     case 1:
-      echo "Hoy es Lunes";
+      echo "Es Lunes";
       break;
     case 2:
-      echo "Hoy es Martes";
+      echo "Es Martes";
       break;
     case 3:
-      echo "Hoy es Miercoles";
+      echo "Es Miercoles";
       break;
     case 4:
-      echo "Hoy es Jueves";
+      echo "Es Jueves";
       break;
     case 5:
-      echo "Hoy es Viernes";
+      echo "Es Viernes";
       break;
     case 6:
-      echo "Hoy es Sabado";
+      echo "Es Sabado";
       break;
     case 7:
-      echo "Hoy es Domingo";
+      echo "Es Domingo";
       break;
     default:
-      echo "Dia no valido";
+      echo "Día no valido";
       break;
   }
   ?>.

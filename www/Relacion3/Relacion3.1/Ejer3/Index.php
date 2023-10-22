@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  Dime un número:
+  Dime un número y te dire el día de la semana al que corresponde:
   <br>
   <br>
   <form action="Dia.php" method="get">
