@@ -21,6 +21,7 @@
 
       if ($combinacion == $clave) {
         echo "La combinación es correcta";
+        echo "<img src='./img/CajaFuerte.jpeg'/>";
       } else {
         $intentosRestantes -= 1;
 
