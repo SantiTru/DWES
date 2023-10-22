@@ -1,53 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Relacion 3.2 Ejer 7</title>
-  <style>
-    .contenedorpadre {
-      text-align: center;
-      position: relative;
-      width: 1200px;
-      height: 500px;
-    }
-    .contenedorhijo {
-      text-align: center;
-      width: 200px;
-      height: 200px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin: 0px 0 0 0px;
-      background-color: aquamarine;
-    }
-    .boton {
-      text-align: center;
-      background-color: aquamarine;
-      width: 200px;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width = device-width, initial-scale = 1.0" />
+  <title>ejercicio 7</title>
 </head>
+
 <body>
-  <div class="contenedorpadre">
-    <div class="contenedorhijo">
-      <br>
-      Bienvenido a su caja fuerte.
-      <form action="CajaFuerte.php" method="post">
-        <br>
-        <br>
-        Introduzca la contraseña:
-        <br>
-        <br>
-        <input type="number" name="intento" required><br>
-        <br>
-        <br>
-        <div class="boton">
-          <input type="submit" value="Probar suerte">
-          <br>
-        </div>
-      </form>
-    </div>
-  </div>
+  <?
+  // al empezar las variables se inicializan a 0, pero en cada ejecución del formulario se recoge su valor
+  $intentosRestantes = isset($_POST["intentosRestantes"]) ? $_POST["intentosRestantes"] : 4;
+
+  $clave = isset($_POST["clave"]) ? $_POST["clave"] : rand(1000, 9999); // al empezar la clave se genera automáticamente, pero cada vez que se envía el formulario no se resetea gracias a que siempre le llega el mismo valor
+
+
+  if ($_SERVER["REQUEST_METHOD"] === "POST") { // comprueba si se ha enviado una petición de tipo "post" desde el servidor
+    if (isset($_POST["combinacion"])) {
+      $combinacion = $_POST["combinacion"];
+
+      if ($combinacion == $clave) {
+        echo "La combinación es correcta";
+      } else {
+        $intentosRestantes -= 1;
+
+        if ($intentosRestantes > 0) {
+          echo "
+                  <form method = \"post\">
+                    <input type = \"hidden\" name = \"intentosRestantes\" value = \"$intentosRestantes\" />
+                    <label for = \"combinacion\">Combinación <input name = \"combinacion\" type = \"number\" min = \"1000\" max = \"9999\" required /></label>
+                    <br /><br />
+                    <input type = \"submit\" value = \"Probar suerte\" />
+                  </form>
+                ";
+
+          echo "<br />La combinación es incorrecta, intentos restantes: $intentosRestantes";
+        } else {
+          echo "La combinación es incorrecta, no has tenido suerte";
+        }
+      }
+    }
+  } else {
+    // mostrar el formulario por primera vez
+    echo "
+            <form method = \"post\">
+              <input type = \"hidden\" name = \"intentosRestantes\" value = \"$intentosRestantes\" />
+              <label for = \"combinacion\">Combinación <input name = \"combinacion\" type = \"number\" min = \"1000\" max = \"9999\" required /></label>
+              <br /><br />
+              <input type = \"submit\" value = \"Probar suerte\" />
+            </form>
+          ";
+  }
+
+
+  // botón de reset
+  echo "
+          <form method = \"get\">
+            <input type = \"hidden\" name = \"intentosRestantes\" value = \"<?= $intentosRestantes = 4 ?>\" />
+            <br />
+            <input type = \"submit\" value = \"Reset\" />
+          </form>
+        ";
+  ?>
 </body>
+
 </html>
