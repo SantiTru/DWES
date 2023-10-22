@@ -23,6 +23,6 @@ switch ($diaMinusculas) {
     echo "Diseño de interfaces web";
     break;
   default:
-    echo "No es un día de la semana válido";
+    echo "Eso que has puesto no es un día de la semana... ";
     break;
 };
