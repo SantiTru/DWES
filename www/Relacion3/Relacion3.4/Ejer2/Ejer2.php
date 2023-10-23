@@ -57,7 +57,7 @@
       <br>
       <br>
 
-      <form action="Index.php" method="post">
+      <form action="../FuncionesMatematicas/Index.php" method="post">
         <input type="submit" value="Volver al indice">
       </form>
     </div>
