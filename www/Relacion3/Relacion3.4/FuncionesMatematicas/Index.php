@@ -95,11 +95,11 @@ un número y devuelve el trozo correspondiente.
         <h5>Muestra los números capicúa que hay entre 1 y 99999</h5>
         <input type="submit" value="Probar ejercicio">
       </form>
-      <form action="Ejer4.php" method="post">
+      <form action="../Ejer4/Index.php" method="post">
         <h4>Ejercicio 4</h4>
         <input type="submit" value="Probar ejercicio">
       </form>
-      <form action="Ejer5.php" method="post">
+      <form action="../Ejer5/Index.php" method="post">
         <h4>Ejercicio 5</h4>
         <input type="submit" value="Probar ejercicio">
       </form>
