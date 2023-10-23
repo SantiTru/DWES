@@ -1,21 +1,24 @@
+<!--Muestra los números primos que hay entre 1 y 1000-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prueba de bibuloteca de funciones</title>
+  <title>Prueba de bibliloteca de funciones</title>
   <style>
     .contenedorpadre {
       position: relative;
       width: 500px;
       height: 200px;
-    
+
     }
 
     .contenedorhijo {
       width: 800px;
-      height: 1000px;
+      height: 1200px;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -23,8 +26,10 @@
       background-color: pink;
       text-align: center;
     }
-    .contenedorhijo ul{
-      text-align: left;
+
+    .primo {
+      color: red;
+      font-weight: bold;
     }
   </style>
 
@@ -34,25 +39,27 @@
   <div class="contenedorpadre">
     <div class="contenedorhijo">
       <h1>¡Biblioteca de funciones!</h1>
-      <form action="SiguientePrimo.php" method="post">
-        <h4>Función siguientePrimo()</h4> 
-        <h5>Dime un número primo para darte el siguiente primo</h5>
-        <input type="number" name="numero">
-        <input type="submit" value="Probar ejercicio">
-      </form>
+      <h4>Vamos a probar las funciones de la biblioteca coloreando los números primos que hay entre 1 y 1000</h4>
+
+      <?php
+      include('../FuncionesMatematicas/BibliotecaDeFunciones.php');
+
+      for ($i = 1; $i <= 1000; $i++) {
+        if (esPrimo($i)) {
+          echo "<span class='primo'>$i</span>" . " ";
+        } else {
+          echo "$i" . " ";
+        }
+      }
+
+      ?>
+
       <br>
+      <br>
+
       <form action="Index.php" method="post">
         <input type="submit" value="Volver al indice">
       </form>
-      <br>
-      <?php
-      include 'BibliotecaDeFunciones.php';
-      $numero = $_POST["numero"];
-      echo "El siguiente número primo de: " . $numero . " es: ";
-      echo siguientePrimo($numero);    
-      ?>
     </div>
   </div>
 </body>
-
-</html>

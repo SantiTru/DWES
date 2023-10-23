@@ -1,4 +1,4 @@
-<!--Crea una bibuloteca de funciones matemáticas que contenga las siguientes funciones.
+<!--Crea una biblioteca de funciones matemáticas que contenga las siguientes funciones.
 Recuerda que puedes usar unas dentro de otras si es necesario.
 1. esCapicua: Devuelve verdadero si el número que se pasa como parámetro es
 capicúa y falso en caso contrario.
@@ -29,7 +29,7 @@ un número y devuelve el trozo correspondiente.
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prueba de bibuloteca de funciones</title>
+  <title>Prueba de biblioteca de funciones</title>
   <style>
     .contenedorpadre {
       position: relative;
@@ -82,14 +82,15 @@ un número y devuelve el trozo correspondiente.
         un número y devuelve el trozo correspondiente.</ul>
       <ul> 14. juntaNumeros: Pega dos números para formar uno</ul>
       <br>
+      <hr>
       <h3>Dime que ejercicio quieres probar:</h3>
-      <br>
-      <form action="Ejer2.php" method="post">
+      <hr>
+      <form action="..\Ejer2\Ejer2.php" method="post">
         <h4>Ejercicio 2</h4>
         <h5>Muestra los números primos que hay entre 1 y 1000</h5>
         <input type="submit" value="Probar ejercicio">
       </form>
-      <form action="Ejer3.php" method="post">
+      <form action="..\Ejer3\Ejer3.php" method="post">
         <h4>Ejercicio 3</h4> 
         <h5>Muestra los números capicúa que hay entre 1 y 99999</h5>
         <input type="submit" value="Probar ejercicio">

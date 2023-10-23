@@ -42,7 +42,7 @@
       <h4>Vamos a probar las funciones de la biblioteca mostrando los números capicúa que hay entre 1 y 99999</h4>
 
       <?php
-      include('BibliotecaDeFunciones.php');
+      include('../FuncionesMatematicas/BibliotecaDeFunciones.php');
 
       for ($i = 1; $i <= 99999; $i++) {
         if (esCapicua($i)) {
