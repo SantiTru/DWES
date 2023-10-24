@@ -45,7 +45,7 @@
 <body>
   <div class="contenedorpadre">
     <div class="contenedorhijo">
-      <h1>Ejercicio 3</h1>
+      <h1>Ejercicio 1</h1>
       <p>FizzBuzz es un reto de programación que consiste en pintar los números del 1al 100 que cumplen las siguientes
         condiciones:</p>
       <p> ○ Si el número que toca pintar es múltiplo de 3, en su lugar pintaremos Fizz.</p>
