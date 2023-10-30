@@ -8,7 +8,7 @@
   <style>
     .contenedorpadre {
       position: relative;
-      width: 1300px;
+      width: 1000px;
       height: 200px;
     }
 
