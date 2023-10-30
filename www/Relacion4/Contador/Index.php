@@ -7,12 +7,13 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Contador insolente</title>
   <style>
     .contenedorpadre {
       position: relative;
-      width: 500px;
+      width: 400px;
       height: 200px;
+      text-align: center;
 
     }
 
@@ -31,12 +32,10 @@ session_start();
 
 <body>
   <div class="contenedorpadre">
+    <h1>Contador insolente</h1>
     <div class="contenedorhijo">
       <?php
-
-
       $_SESSION["contador"];
-
 
       if (isset($_POST["reset"])) {
         $_SESSION["contador"] = 0;
@@ -65,6 +64,7 @@ session_start();
       </form>
     </div>
   </div>
+
 </body>
 
 </html>
