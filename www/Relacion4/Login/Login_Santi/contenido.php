@@ -17,6 +17,3 @@ echo "<br>" . "<img src='Img/bosque5.png' alt= 'Imagen'>";
 echo "<br>" . "<img src='Img/bosque6.png' alt= 'Imagen'>";
 echo "<h2>" ."<a href='logout.php'>Cerrar sesión</a>". "</h2>";
 echo "</div>";
-
-
-?>

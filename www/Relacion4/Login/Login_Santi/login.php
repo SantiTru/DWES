@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     echo "<p style= 'color: red; font-size: 38px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Usuario o contraseña incorrectos.</p>";
-    echo "<p style= 'color: red; font-size: 15px; text-align:center; margin-top: 2%; margin-bottom: 0%';>¿Tiene cuenta?</p>";
+    echo "<p style= 'color: red; font-size: 15px; text-align:center; margin-top: 2%; margin-bottom: 0%';>¿Tienes cuenta?</p>";
 }
 ?>
 
