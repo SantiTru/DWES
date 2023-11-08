@@ -6,7 +6,8 @@ if (!isset($_SESSION['usuario'])) {
     exit();
 }
 
-echo "<div style='text-align: center;'>";
+echo "<div style='background-image: url(../Img/FondoAzul2.jfif)'>";
+echo "<div style='text-align: center; margin-top: 3%'>";
 echo "<h1>" . "Bienvenid@, " . $_SESSION['usuario'] . "!<br>" . "</h1>";
 echo "<br>" . "<img src='Img/imagen.jpg' alt= 'Imagen'>";
 echo "<a href='logout.php'>Cerrar sesión</a>";

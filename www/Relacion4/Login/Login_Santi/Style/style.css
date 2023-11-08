@@ -2,23 +2,21 @@ h2 {
   color: rgb(16, 11, 75);
 }
 #contenedor {
-  width: 400px;
-  margin: 0 auto;
-  margin-top: 40px;
-  background-image: url("/www/Relacion4/Login/Login_Cris/estilos/fondo.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-  color: #ffffff;
+  width: 30.5%;
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  background-color: rgb(223, 224, 224);
+  border-radius: 2%;
 }
 
 #log {
   color: rgb(19, 93, 128);
-  width: 300px;
-  margin: auto;
-  padding: 60px;
-  border: 1px solid black;
-  border-radius: 5px;
+  width: 76%;
+  padding: 11.7%;
+  border: 3px solid black;
+  border-radius: 2%;
   font-weight: bold;
 }
 
@@ -26,7 +24,7 @@ h2 {
 #log [type="password"] {
   color: black;
   width: 100%;
-  padding: 10px;
+  padding: 2%;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -35,7 +33,7 @@ h2 {
 #log [type="submit"] {
   color: white;
   background-color: rgb(60, 177, 231);
-  width: 100%;
+  width: 105%;
   padding: 10px;
   margin-top: 10px;
   border: none;
@@ -45,4 +43,16 @@ h2 {
 
 #log [type="submit"]:hover {
   background-color: #187bcd;
+}
+
+body {
+  background-image: url(../Img/FondoAzul2.jfif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+p {
+  text-align:center;
+  margin-top: 2%;
 }
