@@ -13,7 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
     }
-    echo "<p style= 'color: red; font-size: 25px; text-align:center; margin-top: 4%';>Usuario o contraseña incorrectos.</p>";
+    echo "<p style= 'color: red; font-size: 38px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Usuario o contraseña incorrectos.</p>";
+    echo "<p style= 'color: red; font-size: 15px; text-align:center; margin-top: 2%; margin-bottom: 0%';>¿Tiene cuenta?</p>";
 }
 ?>
 
@@ -30,13 +31,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div id="contenedor">
         <div id="log" style="display:block;">
             <h2>Iniciar sesión</h2>
+            <hr>
+            <br>
             <form action="login.php" method="post">
                 Usuario: <input type="text" name="usuario"><br>
                 Contraseña: <input type="password" name="password"><br>
                 <input type="submit" value="Iniciar sesión">
             </form>
             <br>
-            <p>¿Nuevo usuario? <a href="registro.php">Registrar</a></p>
+            <br>
+            <hr>
+            <br>
+            <p>¿Nuevo usuario? <a href="registro.php">Registrar</a>
         </div>
     </div>
 </body>

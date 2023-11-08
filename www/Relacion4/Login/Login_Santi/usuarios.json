@@ -1,14 +1,22 @@
 [
     {
+        "nombre": "admin",
         "usuario": "admin",
         "password": "admin"
     },
     {
-        "usuario": "Lunna",
-        "password": "Lunera"
+        "nombre": "Lidia Molero",
+        "usuario": "Lidia",
+        "password": "Molero"
     },
     {
+        "nombre": "Santi Trujillo",
         "usuario": "Santi",
         "password": "Tru"
+    },
+    {
+        "nombre": "Santi Trujillo",
+        "usuario": "Santiago",
+        "password": "Trujillo"
     }
 ]
