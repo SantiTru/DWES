@@ -18,5 +18,10 @@
         "nombre": "Santi Trujillo",
         "usuario": "Santiago",
         "password": "Trujillo"
+    },
+    {
+        "nombre": "Sofia Trujillo",
+        "usuario": "Sophie",
+        "password": "Tru"
     }
 ]
