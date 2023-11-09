@@ -1,21 +1,35 @@
 <?php
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['usuario']) && isset($_POST['password'])) {
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];
 
-
-    if ($user['usuario'] === $usuario && $user['password'] === $password) {
+    $usuario = strtolower($_POST['usuario']);
+    $password = hash('sha512', $_POST['password']);
+    try {
+      //code...
+      $host = "db";
+      $dbUsername = "root";
+      $dbPassword = "test";
+      $dbName = "usuarios";
+      $conn = new PDO("mysql:host=$host;dbname=$dbName", $dbUsername, $dbPassword);
+      // set the PDO error mode to exception
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  
+      $statement = $conn->prepare('SELECT * FROM Usuario WHERE Usuario = :usuario AND Password = :password');
+      $statement->execute(array(':usuario' => $usuario, ':password' => $password));
+      $resultado = $statement->fetch();
+      if ($resultado) {
         $_SESSION['usuario'] = $usuario;
-        $_SESSION['password'] = $password;
-        header('Location: contenido.php');
-        exit();
-    }
-} else {
-    echo "<p style= 'color: red; font-size: 38px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Usuario o contraseña incorrectos.</p>";
-    echo "<p style= 'color: red; font-size: 15px; text-align:center; margin-top: 2%; margin-bottom: 0%';>¿Tienes cuenta?</p>";
-}
+        header("Location: contenido.php");
+      } else {
+        header("Location: registro.php");
+      }
+    } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+    };
+  }
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <br>
             <hr>
             <br>
-            <p>¿Nuevo usuario? <a href="registro.php">Registrar</a>
+            <p>¿Nuevo usuario? <a href="./registro.php">Registrar</a>
         </div>
     </div>
 </body>
