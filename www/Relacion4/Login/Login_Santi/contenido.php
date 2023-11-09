@@ -9,37 +9,8 @@ if (!isset($_SESSION['usuario'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        .image-container {
-            text-align: center;
-            margin-top: 3%;
-        }
-
-        .image-container h1 {
-            font-size: 24px;
-        }
-
-        .image-container h5 {
-            font-size: 18px;
-        }
-
-        .image-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .image-column {
-            flex: 0 0 30%; /* Tamaño de la columna de imagen */
-            padding: 10px;
-        }
-
-        .image {
-            max-width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-        }
-    </style>
+<title>Contenido</title>
+<link href="Style/style2.css" rel="stylesheet">
 </head>
 <body>
     <div class="image-container">

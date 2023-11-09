@@ -15,6 +15,6 @@
     </form>
 
     <p>¿No tienes cuenta?</p>
-    <a href="../registro.php">Registrate</a>
+    <a href="registro.php">Registrate</a>
 </body>
 </html>

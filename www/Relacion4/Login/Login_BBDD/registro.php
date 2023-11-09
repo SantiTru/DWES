@@ -1,57 +1,62 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuarios = json_decode(file_get_contents('usuarios.json'), true);
-    $nombre = $_POST['nombre'];
-    $usuario = $_POST['usuario'];
-    $password = $_POST['password'];
+<?
 
-    // Verificar si el usuario ya existe
-    foreach ($usuarios as $user) {
-        if ($user['usuario'] === $usuario) {
-            echo "<div style='text-align: center; margin-top: 3%'>";
-            echo "El usuario ya existe. Por favor, elige otro nombre de usuario.";
-            echo "<h4>" . "<a href='registro.php'>Elegir otro usuario</a>" . "</h>";
-            exit();
+if (
+    isset($_POST['usuario']) && isset($_POST['password'])
+    && isset($_POST['password2'])
+) {
+
+    $usuario = strtolower($_POST['usuario']);
+    $password = hash('sha512', $_POST['password']);
+    $password2 = hash('sha512', $_POST['password2']);
+
+
+    if ($password == $password2) { //si las pass coinciden
+        //comprobamos que el usuario no existe ya en BD
+        try {
+            $host = "db";
+            $dbUsername = "root";
+            $dbPassword = "test";
+            $dbName = "usuarios";
+            $conn = new PDO("mysql:host=$host;dbname=$dbName", $dbUsername, $dbPassword);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $statement = $conn->prepare('SELECT * FROM usuarios WHERE usuario = :usuario LIMIT 1');
+            $statement->execute(array(':usuario' => $usuario));
+            $resultado = $statement->fetch();
+
+            if ($resultado) {
+                echo "el usuario ya existe";
+            } else {
+                //guardo en BD el usuario
+                $statement = $conn->prepare('INSERT INTO usuarios(usuario, password) values (:usuario, :pass)');
+                $statement->execute(array(
+                    ':usuario' => $usuario,
+                    ':pass' => $password
+                ));
+            }
+
+
+            /****************************
+            $conexion = mysqli_connect('db', 'root', 'test', "usuarios");
+            $query = 'SELECT * From usuarios';
+            $result = mysqli_query($conexion, $query);
+
+            while ($value = $result->fetch_array(MYSQLI_ASSOC)) {
+                foreach ($value as $element) {
+                    echo $element ;
+                }
+            }
+            
+            */
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
+        header("Location: login.php");
+    } else {
+        echo "usuario incorrecto";
     }
-
-    // Agregar el nuevo usuario al array
-    $usuarios[] = array('nombre' => $nombre, 'usuario' => $usuario, 'password' => $password);
-
-    // Escribir el array actualizado de usuarios en el archivo JSON
-    file_put_contents('usuarios.json', json_encode($usuarios, JSON_PRETTY_PRINT));
-
-    // Redirigir a la página de inicio de sesión
-    header('Location: login.php');
-    exit();
+} else {
+   // $errores .= '<li>Rellena todos los datos correctamente</li>';
 }
-?>
 
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Registro de Usuario</title>
-    <link href="Style/style.css" rel="stylesheet">
-</head>
-
-<body>
-    <div id="registro" style="display: block;">
-        <h2>Registro de Usuario</h2>
-        <hr>
-        <br>
-        <form action="registro.php" method="post">
-            Nombre completo: <input type="text" name="nombre"><br>
-            Usuario: <input type="text" name="usuario"><br>
-            Contraseña: <input type="password" name="password"><br>
-            <input type="submit" value="Registrar">
-            <br>
-            <br>
-            <hr>
-            <br>
-            <p>¿Ya tienes cuenta? <a href="login.php">Iniciar sesión</a></p>
-        </form>
-    </div>
-</body>
-
-</html>
+require './registro.php';

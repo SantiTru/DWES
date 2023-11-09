@@ -2,17 +2,17 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuarios = json_decode(file_get_contents('usuarios.json'), true);
+  
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];
 
-    foreach ($usuarios as $user) {
-        if ($user['usuario'] === $usuario && $user['password'] === $password) {
+        if (ok) {
             $_SESSION['usuario'] = $usuario;
+            $_SESSION['password'] = $password;
             header('Location: contenido.php');
             exit();
         }
-    }
+    
     echo "<p style= 'color: red; font-size: 38px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Usuario o contraseña incorrectos.</p>";
     echo "<p style= 'color: red; font-size: 15px; text-align:center; margin-top: 2%; margin-bottom: 0%';>¿Tienes cuenta?</p>";
 }

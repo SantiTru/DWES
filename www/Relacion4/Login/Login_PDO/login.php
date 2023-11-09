@@ -5,13 +5,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];
 
-    foreach ($usuarios as $user) {
-        if ($user['usuario'] === $usuario && $user['password'] === $password) {
-            $_SESSION['usuario'] = $usuario;
-            header('Location: contenido.php');
-            exit();
-        }
+
+    if ($user['usuario'] === $usuario && $user['password'] === $password) {
+        $_SESSION['usuario'] = $usuario;
+        $_SESSION['password'] = $password;
+        header('Location: contenido.php');
+        exit();
     }
+} else {
     echo "<p style= 'color: red; font-size: 38px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Usuario o contraseña incorrectos.</p>";
     echo "<p style= 'color: red; font-size: 15px; text-align:center; margin-top: 2%; margin-bottom: 0%';>¿Tienes cuenta?</p>";
 }

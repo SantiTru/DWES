@@ -9,12 +9,13 @@ session_start();
  */
 
 
-if(isset($_SESSION['user'])){
-  require './views/contenido.view.php';
+if(isset($_SESSION['usuario'])){
+  require 'views/contenido.view.php';
 }
 else{
-  require './index.php';
+  require 'views/login.view.php';
 }
 
 ?>
+
 
