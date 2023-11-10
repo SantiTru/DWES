@@ -24,7 +24,8 @@ if (isset($_POST['usuario']) && isset($_POST['password'])) {
     } else {
         echo "Usuario o contraseña incorrectos";
     }
-}
 
+}
 require 'views/login.view.php';
+
 ?>

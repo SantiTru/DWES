@@ -9,7 +9,7 @@
 <body>
     <form action="<? echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" name="login">
 
-    <input type="text" name="user" placeholder="Usuario">
+    <input type="text" name="usuario" placeholder="Usuario">
     <input type="password" name="password" placeholder="Password">
     <input type="submit" value="Aceptar">
     </form>
