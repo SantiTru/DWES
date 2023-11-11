@@ -23,7 +23,9 @@ if (
             $resultado = $statement->fetch();
 
             if ($resultado) {
-                echo "El usuario ya existe";
+                echo "<div style='text-align: center; margin-top: 3%'>";
+                echo "El usuario ya existe. Por favor, elige otro nombre de usuario.";
+                echo "<h4>" . "<a href='registro.php'>Elegir otro usuario</a>" . "</h>";
             } else {
                 // Registro del usuario en la base de datos
                 $statement = $conn->prepare('INSERT INTO usuario (usuario, password) VALUES (:usuario, :password)');
@@ -45,4 +47,3 @@ if (
 }
 
 require 'views/registro.view.php';
-?>
