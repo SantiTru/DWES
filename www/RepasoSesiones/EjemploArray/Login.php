@@ -1,11 +1,12 @@
 <?php
 session_start();
 
-// Verificar si el usuario ya está autenticado
+/* Lo dejamos comentado para comprobar que aún yendo a inicio de sesión 
+Verificar si el usuario ya está autenticado
 if (isset($_SESSION['usuario'])) {
     header("Location: content.php");
     exit();
-}
+}*/
 
 // Referencia al array de usuarios
 $usuarios = &$_SESSION['usuarios'];
@@ -33,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
+    <link href="Style/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -55,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="submit" value="Iniciar Sesión">
     </form>
 
-    <p><a href="register.php">¿No tienes cuenta? Regístrate</a></p>
+    <p><a href="register.php" class="resaltado">¿No tienes cuenta? Regístrate</a></p>
 </body>
 
 </html>

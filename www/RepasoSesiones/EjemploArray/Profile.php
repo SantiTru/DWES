@@ -24,22 +24,7 @@ if (isset($_SESSION['usuarios'][$_SESSION['usuario']])) {
 <head>
     <meta charset="UTF-8">
     <title>Perfil del Usuario</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link href="Style/style2.css" rel="stylesheet">
 </head>
 
 <body>
@@ -70,9 +55,9 @@ if (isset($_SESSION['usuarios'][$_SESSION['usuario']])) {
     </table>
 
     <!-- Mostrar enlaces para cambiar la contraseña, volver al contenido y cerrar sesión -->
-    <p><a href="change_password.php">Cambiar Contraseña</a></p>
-    <p><a href="content.php">Volver al Contenido</a></p>
-    <p><a href="logout.php">Cerrar Sesión</a></p>
+    <p><a href="change_password.php" class="resaltado">Cambiar Contraseña</a></p>
+    <p><a href="content.php" class="resaltado">Volver al Contenido</a></p>
+    <p><a href="logout.php" class="resaltado">Cerrar Sesión</a></p>
 </body>
 
 </html>

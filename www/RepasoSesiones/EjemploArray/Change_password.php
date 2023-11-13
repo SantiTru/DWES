@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Cambiar Contraseña</title>
+    <link href="Style/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -53,9 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="submit" value="Cambiar Contraseña">
     </form>
 
-    <p><a href="profile.php">Volver al Perfil</a></p>
-    <p><a href="content.php">Volver al Contenido</a></p>
-    <p><a href="logout.php">Cerrar Sesión</a></p>
+    <p><a href="profile.php" class="resaltado">Volver al Perfil</a></p>
+    <p><a href="content.php" class="resaltado">Volver al Contenido</a></p>
+    <p><a href="logout.php" class="resaltado">Cerrar Sesión</a></p>
 </body>
 
 </html>

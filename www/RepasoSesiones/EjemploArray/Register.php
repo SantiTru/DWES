@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Registro de Usuario</title>
+    <link href="Style/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -70,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="submit" value="Registrar">
     </form>
 
-    <p><a href="login.php">¿Ya tienes cuenta? Iniciar sesión</a></p>
+    <p><a href="login.php" class="resaltado">¿Ya tienes cuenta? Iniciar sesión</a></p>
 </body>
 
 </html>
