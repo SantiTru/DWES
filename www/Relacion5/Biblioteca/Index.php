@@ -141,6 +141,13 @@
         ORDER BY libros.titulo")) {
             // Buscamos todos los libros de la biblioteca
             if ($result->num_rows != 0) {
+
+                // Primero, el formulario de búsqueda
+                echo "<form action='index.php'>
+                        <input type='hidden' name='action' value='buscarLibros'>
+                        <input type='text' name='textoBusqueda' placeholder='Titulo, Genero, Pais, Año o Autores...'>
+                        <input type='submit' value='Buscar'>
+                        </form><br>";
                 // Mostrar los libros
                 echo "<table border='1', align='center'>
                 <tr>
@@ -391,24 +398,64 @@
         echo "<p><a href='index.php'>Volver</a></p>";
     }
 
-    /*
+
     // --------------------------------- BUSCAR LIBROS ----------------------------------------
 
     function buscarLibros()
     {
         // Recuperamos el texto de búsqueda de la variable de formulario
-        
+        $textoBusqueda = $_REQUEST["textoBusqueda"];
         echo "<h1>Resultados de la búsqueda: \"$textoBusqueda\"</h1>";
 
         // Buscamos los libros de la biblioteca que coincidan con el texto de búsqueda
-        if(){
-        // La consulta se ha ejecutado con éxito. Vamos a ver si contiene registros
+        $db = new mysqli("db", "root", "test", "biblioteca");
+        if ($result = $db->query("SELECT * FROM libros
+					INNER JOIN escriben ON libros.idLibro = escriben.idLibro
+					INNER JOIN personas ON escriben.idPersona = personas.idPersona
+					WHERE libros.titulo LIKE '%$textoBusqueda%'
+					OR libros.genero LIKE '%$textoBusqueda%'
+                    OR libros.pais LIKE '%$textoBusqueda%'
+                    OR libros.año LIKE '%$textoBusqueda%'
+					OR personas.nombre LIKE '%$textoBusqueda%'
+					OR personas.apellido LIKE '%$textoBusqueda%'
+					ORDER BY libros.titulo")) {
+
+            // La consulta se ha ejecutado con éxito. Vamos a ver si contiene registros
             if ($result->num_rows != 0) {
                 // La consulta ha devuelto registros: vamos a mostrarlos
                 // Primero, el formulario de búsqueda
-        
+                echo "<form action='index.php'>
+								<input type='hidden' name='action' value='buscarLibros'>
+                            	<input type='text' name='textoBusqueda' placeholder='Titulo, Genero, Pais, Año o Autores...'>
+								<input type='submit' value='Buscar'>
+                          </form><br>";
                 // Después, la tabla con los datos
-        
+                echo "<table border='1', align='center'>
+                <tr>
+                    <th>Título</th>
+                    <th>Género</th>
+                    <th>País</th>
+                    <th>Año</th>
+                    <th>Número de Páginas</th>
+                    <th>Autor</th>
+                    <th>Apellido</th>
+                    <th>Modificar</th>
+                    <th>Borrar</th>
+                </tr>";
+                while ($fila = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $fila['titulo'] . "</td>";
+                    echo "<td>" . $fila['genero'] . "</td>";
+                    echo "<td>" . $fila['pais'] . "</td>";
+                    echo "<td>" . $fila['año'] . "</td>";
+                    echo "<td>" . $fila['numPaginas'] . "</td>";
+                    echo "<td>" . $fila['nombre'] . "</td>";
+                    echo "<td>" . $fila['apellido'] . "</td>";
+                    echo "<td><a href='index.php?action=formularioModificarLibro&idLibro=" . $fila['idLibro'] . "'>Modificar</a></td>";
+                    echo "<td><a href='index.php?action=borrarLibro&idLibro=" . $fila['idLibro'] . "'>Borrar</a></td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
             } else {
                 // La consulta no contiene registros
                 echo "No se encontraron datos";
@@ -420,7 +467,7 @@
         echo "<p><a href='index.php?action=formularioInsertarLibros'>Nuevo</a></p>";
         echo "<p><a href='index.php'>Volver</a></p>";
     }
-    */
+
     // --------------------------------- FORMULARIO Insertar Autores ----------------------------------------
 
     function formularioInsertarAutores()
