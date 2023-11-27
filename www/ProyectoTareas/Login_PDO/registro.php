@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <title>Registro de Usuario</title>
-    <link href="Style/style.css" rel="stylesheet">
+    <link href="../Style/style.css" rel="stylesheet">
 </head>
 
 <body>
