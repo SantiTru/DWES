@@ -10,30 +10,85 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>Biblioteca</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4285f4;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4285f4;
+            cursor: pointer;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            width: 50%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        input[type="text"],
+        select,
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4285f4;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #357ae8;
+        }
+    </style>
+
 </head>
 
 <body>
     <!--
-<h1>Selector de Acciones</h1>
-
-<form action="index.php" method="get">
-    <label for="action">Selecciona una acción:</label>
-    <select name="action" id="action">
-        <option value="mostrarListaLibros">Mostrar Lista de Libros</option>
-        <option value="formularioInsertarLibros">Formulario Insertar Libros</option>
-        <option value="insertarLibro">Insertar Libro</option>
-        <option value="borrarLibro">Borrar Libro</option>
-        <option value="formularioModificarLibro">Formulario Modificar Libro</option>
-        <option value="modificarLibro">Modificar Libro</option>
-        <option value="buscarLibros">Buscar Libros</option>
-        <option value="formularioInsertarAutores">Formulario Insertar Autores</option>
-        <option value="insertarAutor">Insertar Autor</option>
-    </select>
-
-    <br><br>
-
-    <input type="submit" value="Ejecutar Acción">
-</form>-->
+-->
     <?php
 
     // Miramos el valor de la variable "action", si existe. Si no, le asignamos una acción por defecto
@@ -87,7 +142,7 @@
             // Buscamos todos los libros de la biblioteca
             if ($result->num_rows != 0) {
                 // Mostrar los libros
-                echo "<table border='1', text aling = 'center'>
+                echo "<table border='1', align='center'>
                 <tr>
                     <th>Título</th>
                     <th>Género</th>
@@ -102,15 +157,15 @@
 
                 while ($fila = $result->fetch_assoc()) {
                     echo "<tr>
-                    <td>{$fila['titulo']}</td>
-                    <td>{$fila['genero']}</td>
-                    <td>{$fila['pais']}</td>
-                    <td>{$fila['año']}</td>
-                    <td>{$fila['numPaginas']}</td>
-                    <td>{$fila['nombre']}</td>
-                    <td>{$fila['apellido']}</td>
-                    <td><a href = 'index.php?action=formularioModificarLibro&idLibro=" . $fila['idLibro'] . "'>Modificar</a></td>
-                    <td><a href = 'index.php?action=borrarLibro&idLibro=" . $fila['idLibro'] . "'>Borrar</a></td>
+                    <td style='text-align: center'>{$fila['titulo']}</td>
+                    <td style='text-align: center'>{$fila['genero']}</td>
+                    <td style='text-align: center'>{$fila['pais']}</td>
+                    <td style='text-align: center'>{$fila['año']}</td>
+                    <td style='text-align: center'>{$fila['numPaginas']}</td>
+                    <td style='text-align: center'>{$fila['nombre']}</td>
+                    <td style='text-align: center'>{$fila['apellido']}</td>
+                    <td style='text-align: center'><a href = 'index.php?action=formularioModificarLibro&idLibro=" . $fila['idLibro'] . "'>Modificar</a></td>
+                    <td style='text-align: center'><a href = 'index.php?action=borrarLibro&idLibro=" . $fila['idLibro'] . "'>Borrar</a></td>
                 </tr>";
                 }
 
@@ -159,7 +214,7 @@
                 </form>";
         echo "<p><a href='index.php'>Volver</a></p>";
     }
-    
+
     // --------------------------------- INSERTAR LIBROS ----------------------------------------
 
     function insertarLibro()
@@ -182,14 +237,14 @@
 
         if ($db->affected_rows == 1) {
             // Si la inserción del libro ha funcionado, continuamos insertando en la tabla "escriben"
-        $result = $db->query("SELECT MAX(idLibro) AS ultimoIdLibro FROM libros");
-        $idLibro = $result->fetch_assoc()['ultimoIdLibro'];
-        foreach ($idPersona as $id) {
-            $db->query("INSERT INTO escriben (idLibro, idPersona) VALUES ('$db->$idLibro', '$id')");
-            // Tenemos que averiguar qué idLibro se ha asignado al libro que acabamos de insertar
-          
-            // Ya podemos insertar todos los autores junto con el libro en "escriben"
-        }  
+            $result = $db->query("SELECT MAX(idLibro) AS ultimoIdLibro FROM libros");
+            $idLibro = $result->fetch_assoc()['ultimoIdLibro'];
+            foreach ($idPersona as $id) {
+                $db->query("INSERT INTO escriben (idLibro, idPersona) VALUES (" . $idLibro . ", " . $id . ")");
+                // Tenemos que averiguar qué idLibro se ha asignado al libro que acabamos de insertar
+
+                // Ya podemos insertar todos los autores junto con el libro en "escriben"
+            }
             echo "Libro insertado con éxito";
         } else {
             // Si la inserción del libro ha fallado, mostramos mensaje de error
@@ -197,7 +252,7 @@
         }
         echo "<p><a href='index.php'>Volver</a></p>";
     }
-/*
+
     // --------------------------------- BORRAR LIBROS ----------------------------------------
 
     function borrarLibro()
@@ -205,7 +260,12 @@
         echo "<h1>Borrar libros</h1>";
 
         // Recuperamos el id del libro y lanzamos el DELETE contra la BD
-        
+        $idLibro = $_REQUEST['idLibro'];
+
+        $db = new mysqli("db", "root", "test", "biblioteca");
+
+        $db->query("DELETE FROM libros WHERE idLibro = $idLibro");
+
         // Mostramos mensaje con el resultado de la operación
         if ($db->affected_rows == 0) {
             echo "Ha ocurrido un error al borrar el libro. Por favor, inténtelo de nuevo";
@@ -222,29 +282,63 @@
         echo "<h1>Modificación de libros</h1>";
 
         // Recuperamos el id del libro que vamos a modificar y sacamos el resto de sus datos de la BD
-       
-        // Creamos el formulario con los campos del libro
-        // y lo rellenamos con los datos que hemos recuperado de la BD
-        
+        $idLibro = $_REQUEST['idLibro'];
 
-        // Vamos a añadir un selector para el id del autor o autores.
-        // Para que salgan preseleccionados los autores del libro que estamos modificando, vamos a buscar
-        // también a esos autores.
-        
-        // Vamos a convertir esa lista de autores del libro en un array de ids de personas
-        
-        
-        // Ya tenemos todos los datos para añadir el selector de autores al formulario
-        
-        
-        // Por último, un enlace para crear un nuevo autor
-        echo "<a href='index.php?action=formularioInsertarAutores'>Añadir nuevo</a><br>";
+        $db = new mysqli("db", "root", "test", "biblioteca");
 
-        // Finalizamos el formulario
-        echo "  <input type='hidden' name='action' value='modificarLibro'>
-                    <input type='submit'>
-                  </form>";
-        echo "<p><a href='index.php'>Volver</a></p>";
+        $result = $db->query("SELECT * FROM libros WHERE idLibro = $idLibro");
+
+        if ($result->num_rows == 1) {
+            $libro = $result->fetch_assoc();
+
+            // Creamos el formulario con los campos del libro
+            // y lo rellenamos con los datos que hemos recuperado de la BD
+            echo "<form action='index.php' method='get'>
+                Título:<input type='text' name='titulo' value='{$libro['titulo']}'><br><br>
+                Género:<input type='text' name='genero' value='{$libro['genero']}'><br><br>
+                País:<input type='text' name='pais' value='{$libro['pais']}'><br><br>
+                Año:<input type='text' name='año' value='{$libro['año']}'><br><br>
+                Número de páginas:<input type='text' name='numPaginas' value='{$libro['numPaginas']}'><br>";
+            echo "<br>";
+
+
+            // Vamos a añadir un selector para el id del autor o autores.
+            // Para que salgan preseleccionados los autores del libro que estamos modificando, vamos a buscar
+            // también a esos autores.
+            $sqlAutores = "SELECT idPersona, nombre, apellido FROM personas";
+            $resultAutores = $db->query($sqlAutores);
+
+            $sqlAutoresLibro = "SELECT idPersona FROM escriben WHERE idLibro = $idLibro";
+            $resultAutoresLibro = $db->query($sqlAutoresLibro);
+
+            $autoresLibro = [];
+            while ($row = $resultAutoresLibro->fetch_assoc()) {
+                $autoresLibro[] = $row['idPersona'];
+            }
+
+            echo "Autores en nuestra BBDD: <br><br><select name='idPersona[]' multiple='true'>";
+            while ($fila = $resultAutores->fetch_assoc()) {
+                $selected = in_array($fila['idPersona'], $autoresLibro) ? 'selected' : '';
+                echo "<option value='{$fila['idPersona']}' $selected>{$fila['nombre']} {$fila['apellido']}</option>";
+            }
+            echo "</select>";
+            echo "<br><br>";
+
+            // Agregamos un campo oculto para el idLibro
+            echo "<input type='hidden' name='idLibro' value='$idLibro'>";
+
+            // Por último, un enlace para crear un nuevo autor
+            echo "<a href='index.php?action=formularioInsertarAutores'>Añadir nuevo</a><br><br>";
+
+            // Finalizamos el formulario
+            echo "  <input type='hidden' name='action' value='modificarLibro'>
+                        <input type='hidden' name='idLibro' value='$idLibro'>
+                        <input type='submit'>
+                    </form>";
+            echo "<p><a href='index.php'>Volver</a></p>";
+        } else {
+            echo "Error al recuperar datos del libro.";
+        }
     }
 
     // --------------------------------- MODIFICAR LIBROS ----------------------------------------
@@ -253,28 +347,51 @@
     {
         echo "<h1>Modificación de libros</h1>";
 
-        // Vamos a procesar el formulario de modificación de libros
-        // Primero, recuperamos todos los datos del formulario (idLibro, titulo....)
-        
-        // Lanzamos el UPDATE contra la base de datos.
-        
-        
-        if ($db->affected_rows == 1) {
-            // Si la modificación del libro ha funcionado, continuamos actualizando la tabla "escriben".
-            // Primero borraremos todos los registros del libro actual y luego los insertaremos de nuevo
-          
-            
+        // Recuperamos el id del libro que vamos a modificar y sacamos el resto de sus datos de la BD
+        $idLibro = $_REQUEST['idLibro'];
 
-            // Ya podemos insertar todos los autores junto con el libro en "escriben"
-            
-            echo "Libro actualizado con éxito";
+        $db = new mysqli("db", "root", "test", "biblioteca");
+
+        // Verificar que el libro existe antes de modificarlo
+        $comprobarQuery = "SELECT * FROM libros WHERE idLibro = $idLibro";
+        $comprobarResult = $db->query($comprobarQuery);
+
+        if ($comprobarResult->num_rows > 0) {
+            // El libro existe, continuamos con la actualización
+
+            $idLibro = $_REQUEST['idLibro'];
+            $titulo = $_REQUEST['titulo'];
+            $genero = $_REQUEST['genero'];
+            $pais = $_REQUEST['pais'];
+            $año = $_REQUEST['año'];
+            $numPaginas = $_REQUEST['numPaginas'];
+            $idPersona = $_REQUEST['idPersona'];
+
+            // Lanzamos el UPDATE contra la base de datos.
+            $updateQuery = "UPDATE libros SET titulo='$titulo', genero='$genero', pais='$pais', año='$año', numPaginas='$numPaginas' WHERE idLibro=$idLibro";
+            if ($db->query($updateQuery)) {
+                // Si la modificación del libro ha funcionado, continuamos actualizando la tabla "escriben".
+                // Primero, borramos todos los registros del libro actual y luego los insertamos de nuevo
+                $db->query("DELETE FROM escriben WHERE idLibro=$idLibro");
+
+                // Ya podemos insertar todos los autores junto con el libro en "escriben"
+                foreach ($idPersona as $id) {
+                    $db->query("INSERT INTO escriben (idLibro, idPersona) VALUES ($idLibro, $id)");
+                }
+
+                echo "Libro actualizado con éxito";
+            } else {
+                // Si la modificación del libro ha fallado, mostramos mensaje de error
+                echo "Error al modificar el libro. Por favor, inténtelo más tarde. Detalles: " . $db->error;
+            }
         } else {
-            // Si la modificación del libro ha fallado, mostramos mensaje de error
-            echo "Ha ocurrido un error al modificar el libro. Por favor, inténtelo más tarde.";
+            echo "El libro que intentas modificar no existe. Por favor, inténtelo más tarde.";
         }
+
         echo "<p><a href='index.php'>Volver</a></p>";
     }
 
+    /*
     // --------------------------------- BUSCAR LIBROS ----------------------------------------
 
     function buscarLibros()
@@ -320,7 +437,7 @@
 				</form>";
         echo "<p><a href='index.php'>Volver</a></p>";
     }
-    /*
+
     // --------------------------------- INSERTAR autores ----------------------------------------
 
 
@@ -330,11 +447,16 @@
 
         // Vamos a procesar el formulario de alta de libros
         // Primero, recuperamos todos los datos del formulario (nombre, apellido)
-        
-        
+
+        $nombre = $_REQUEST['nombre'];
+        $apellido = $_REQUEST['apellido'];
+
+        $db = new mysqli("db", "root", "test", "biblioteca");
+
+
         // Lanzamos el INSERT contra la BD.
-        
-        
+        $db->query("INSERT INTO personas(nombre, apellido) VALUES ('$nombre', '$apellido')");
+
         if ($db->affected_rows == 1) {
 
             echo "Autor insertado con éxito";
@@ -343,7 +465,8 @@
             echo "Ha ocurrido un error al insertar el autor. Por favor, inténtelo más tarde.";
         }
         echo "<p><a href='index.php'>Volver</a></p>";
-    }*/
+    }
+
     ?>
 
 </body>
