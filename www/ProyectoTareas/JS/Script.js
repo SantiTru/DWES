@@ -1,6 +1,3 @@
-/* ------------------------------------ Click on login and Sign Up to  changue and view the effect
----------------------------------------
-*/
 
 const time_to_show_login = 400;
 const time_to_hidden_login = 200;
