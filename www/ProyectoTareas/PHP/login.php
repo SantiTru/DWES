@@ -7,13 +7,8 @@ if (isset($_POST['usuario']) && isset($_POST['password'])) {
   $password = hash('sha512', $_POST['password']);
 
     try {
-      //code...
-    $host = "db";
-    $dbUsername = "root";
-    $dbPassword = "test";
-    $dbName = "tareas";
-    $conn = new PDO("mysql:host=$host;dbname=$dbName", $dbUsername, $dbPassword);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      
+    require './Connex_BD/connexion.php';
 
     $statement = $conn->prepare('SELECT * FROM usuarios WHERE usuario = :usuario AND password = :password');
     $statement->execute(array(':usuario' => $usuario, ':password' => $password));
@@ -22,44 +17,13 @@ if (isset($_POST['usuario']) && isset($_POST['password'])) {
     if ($resultado) {
         $_SESSION['usuario'] = $usuario;
         header("Location: contenido.php");
-        exit; // Asegurarse de que la ejecución del script se detenga aquí
+        exit; 
     } else {
-      echo "<p style= 'color: red; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Usuario o contraseña incorrectos.</p>";
-      echo "<p style= 'color: red; font-weight: bold; font-size: 25px; text-align:center; margin-top: 2%; margin-bottom: 0%';>¿Tienes cuenta? <a href='./registro.php'>Registrar</a></p>";
+      echo "<p style= 'color: red; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Usuario o contraseña incorrectos.</p><br><br>";
+      echo "<p style= 'color: grey; font-weight: bold; font-size: 25px; text-align:center; margin-top: 2%; margin-bottom: 0%';>¿Tienes cuenta?. ¡Registrate!</p><br><br>";
     }
     } catch (PDOException $e) {
       echo "Error: " . $e->getMessage();
     };
   }
-?>
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Login</title>
-    <link href="../Style/style.css" rel="stylesheet">
-</head>
-
-<body>
-
-    <div id="contenedor">
-        <div id="log" style="display:block;">
-            <h2>Iniciar sesión</h2>
-            <hr>
-            <br>
-            <form action="login.php" method="post">
-                Usuario: <input type="text" name="usuario"><br>
-                Contraseña: <input type="password" name="password"><br>
-                <input type="submit" value="Iniciar sesión">
-            </form>
-            <br>
-            <br>
-            <hr>
-            <br>
-            <p>¿Nuevo usuario? <a href="./registro.php">Registrar</a>
-        </div>
-    </div>
-</body>
-
-</html>
+  include '../Views/login.view.html';

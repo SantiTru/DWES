@@ -18,19 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($password == $password2) {
             // Conexión a la base de datos y registro del usuario
             try {
-                $host = "db";
-                $dbUsername = "root";
-                $dbPassword = "test";
-                $dbName = "tareas";
-                $conn = new PDO("mysql:host=$host;dbname=$dbName", $dbUsername, $dbPassword);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                require './Connex_BD/connexion.php';
 
                 $statement = $conn->prepare('SELECT * FROM usuarios WHERE usuario = :usuario LIMIT 1');
                 $statement->execute(array(':usuario' => $usuario));
                 $resultado = $statement->fetch();
 
                 if ($resultado) {
-                    echo "<p style= 'color: red; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>El usuario ya existe. Por favor, elige otro nombre de usuario.</p>";
+                    echo "<p style= 'color: red; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>El usuario ya existe. Por favor, elige otro nombre de usuario.</p><br><br>";
                 } else {
                     // Registro del usuario en la base de datos
                     $statement = $conn->prepare('INSERT INTO usuarios (usuario, password) VALUES (:usuario, :password)');
@@ -38,56 +33,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         ':usuario' => $usuario,
                         ':password' => $password
                     ));
-
-                    header("Location: login.php");
+                    echo "<p style= 'color: green; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Usuario registrado correctamente.</p><br><br>";
                 }
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();
             }
         } else {
-            echo "<p style= 'color: red; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Fallo en el registro. Las contraseñas no coinciden.</p>";
+            echo "<p style= 'color: red; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Fallo en el registro. Las contraseñas no coinciden.</p><br><br>";
         }
     } else {
         // Manejo de errores en caso de datos faltantes
-        echo "<p style= 'color: red; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Por favor, rellena todos los datos correctamente.</p>";
+        echo "<p style= 'color: red; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Por favor, rellena todos los datos correctamente.</p><br><br>";
     }
 }
-?>
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Registro de Usuario</title>
-    <link href="../Style/style.css" rel="stylesheet">
-</head>
-
-<body>
-    <div id="registro" style="display: block;">
-        <h2>Registro de Usuario</h2>
-        <hr>
-        <br>
-        <?php
-        // Mostrar errores solo si hay algún error
-        if (!empty($errores)) {
-            echo "<div style='text-align: center; margin-top: 3%'>";
-            echo $errores;
-            echo "<h4>" . "<a href='registro.php'>Volver al formulario de registro</a>" . "</h4>";
-            echo "</div>";
-        }
-        ?>
-        <form action="registro.php" method="post">
-            Usuario: <input type="text" name="usuario" placeholder="Nombre de usuario"><br>
-            Contraseña: <input type="password" name="password" placeholder="Password"><br>
-            <input type="password" name="password2" placeholder="Confirmar Password">
-            <input type="submit" value="Registrar">
-            <br>
-            <br>
-            <hr>
-            <br>
-            <p>¿Ya tienes cuenta? <a href="login.php">Iniciar sesión</a></p>
-        </form>
-    </div>
-</body>
-
-</html>
+include '../Views/registro.view.html';
