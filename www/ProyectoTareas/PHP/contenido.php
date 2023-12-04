@@ -49,7 +49,7 @@ function mostrarTareas()
                                 <td>{$row['id']}</td>
                                 <td>{$row['titulo']}</td>
                                 <td>
-                                    <a href='descripcion.php?id={$row['id']}' style='max-width: 30rem; word-wrap: break-word;'>Ver detalles </a>
+                                    <a href='descripcion.php?id={$row['id']}' style='max-width: 30rem; word-wrap: break-word;'>" . substr($row['descripcion'], 0, 10) . "... </a>
                                 </td>
                                 <td>
                                     <a href='modificar.php?id={$row['id']}'>Modificar</a> | 
