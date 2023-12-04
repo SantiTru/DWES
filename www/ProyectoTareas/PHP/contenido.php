@@ -8,8 +8,8 @@ if (!isset($_SESSION['usuario'])) {
 
 if (isset($_SESSION['usuario']))
 {
-echo "<div style='text-align: center; font-size: 30px; font-weight: bold; color: #0d0e0e;'><br><br>";
-echo "Welcome, " . $_SESSION['usuario'];
+echo "<div style='text-align: center; font-size: 20px; font-weight: bold; color: #0d0e0e;'><br><br>";
+echo "Welcome, " . $_SESSION['usuario']. ". Estas son tus tareas: ";
 echo "</div><br><br>"; 
 
 mostrarTareas();
