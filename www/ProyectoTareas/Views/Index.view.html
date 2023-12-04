@@ -50,10 +50,13 @@
                 ><i class="material-icons">&#xE5C4;</i></a
               >
               <h2>ACCESO</h2>
-              <form class="" action="./PHP/login.php" method="post">
-                <input type="text" name="usuario" placeholder="Usuario" />
-                <input type="password" name="password" placeholder="Password" />
-                <button class="btn_login" type="submit" value="Iniciar sesión">
+              <form action="./PHP/login.php" method="post">
+                <br>
+                <input type="text" name="usuario" placeholder="Usuario" style="width: 260px; height: 20px; padding: 10px; font-size: 16px; border-radius: 15px;"/>
+                <br><br>
+                <input type="password" name="password" placeholder="Password" style="width: 260px; height: 20px; padding: 10px; font-size: 16px; border-radius: 15px;"/>
+                <br><br>
+                <button class="btn_login" type="submit" value="Iniciar sesión" onclick="change_to_login()">
                   Acceder
                 </button>
               </form>
@@ -65,13 +68,18 @@
               >
               <h2>REGISTRO</h2>
               <form action="./PHP/registro.php" method="post">
-                <input type="text" name="usuario" placeholder="Usuario" />
-                <input type="password" name="password" placeholder="Password" />
+                <br>
+                <input type="text" name="usuario" placeholder="Usuario" style="width: 260px; height: 20px; padding: 10px; font-size: 16px; border-radius: 15px;"/>
+                <br><br>
+                <input type="password" name="password" placeholder="Password" style="width: 260px; height: 20px; padding: 10px; font-size: 16px; border-radius: 15px;"/>
+                <br><br>
                 <input
                   type="password"
                   name="password2"
                   placeholder="Confirmar Password"
+                  style="width: 260px; height: 20px; padding: 10px; font-size: 16px; border-radius: 15px;"
                 />
+                <br><br>
                 <button class="btn_sign_up" type="submit" value="Registrar" onclick="change_to_sign_up()">
                   Registrarse
                 </button>

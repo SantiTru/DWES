@@ -25,7 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $resultado = $statement->fetch();
 
                 if ($resultado) {
+                    echo "<body style='background-image: url(../Img/fondo_difuminado_login.jpg);'>";
                     echo "<p style= 'color: red; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>El usuario ya existe. Por favor, elige otro nombre de usuario.</p><br><br>";
+                    echo "<p style= 'text-align:center; margin-top: 2%; margin-bottom: 0%';><a href='../index.php' style='font-size: 20px; font-weight: bold; color: rgb(14, 14, 134);'>¡Vuelve a intentarlo!</a></p><br><br>";
+                    return;
                 } else {
                     // Registro del usuario en la base de datos
                     $statement = $conn->prepare('INSERT INTO usuarios (usuario, password) VALUES (:usuario, :password)');
@@ -33,17 +36,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         ':usuario' => $usuario,
                         ':password' => $password
                     ));
-                    echo "<p style= 'color: green; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Usuario registrado correctamente.</p><br><br>";
+                    echo "<body style='background-image: url(../Img/fondo_difuminado_login.jpg);'>";
+                    echo "<p style= 'color: rgb(0, 0, 0); font-weight: bold; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Usuario registrado correctamente.</p><br><br>";
+                    echo "<p style= 'text-align:center; margin-top: 2%; margin-bottom: 0%';><a href='../index.php' style='font-size: 20px; font-weight: bold; color: rgb(14, 14, 134);'>Ya puedes logarte y empezar.</a></p><br><br>";
+                    return;
                 }
             } catch (PDOException $e) {
                 echo "Error: " . $e->getMessage();
             }
         } else {
+            echo "<body style='background-image: url(../Img/fondo_difuminado_login.jpg);'>";
             echo "<p style= 'color: red; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Fallo en el registro. Las contraseñas no coinciden.</p><br><br>";
+            echo "<p style= 'text-align:center; margin-top: 2%; margin-bottom: 0%';><a href='../index.php' style='font-size: 20px; font-weight: bold; color: rgb(14, 14, 134);'>¡Vuelve a intentarlo!</a></p><br><br>";
+            return;
         }
     } else {
-        // Manejo de errores en caso de datos faltantes
+        echo "<body style='background-image: url(../Img/fondo_difuminado_login.jpg);'>";
         echo "<p style= 'color: red; font-size: 28px; text-align:center; margin-top: 4%; margin-bottom: 0%';>Por favor, rellena todos los datos correctamente.</p><br><br>";
+        echo "<p style= 'text-align:center; margin-top: 2%; margin-bottom: 0%';><a href='../index.php' style='font-size: 20px; font-weight: bold; color: rgb(14, 14, 134);'>¡Vuelve a intentarlo!</a></p><br><br>";
+        return;
     }
 }
 include '../Views/registro.view.html';
