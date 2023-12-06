@@ -2,7 +2,6 @@
 session_start();
 
 
-
 if (isset($_POST['usuario']) && isset($_POST['password'])) {
   // Verificación de credenciales en la base de datos y configuración de la sesión
   $usuario = strtolower($_POST['usuario']);

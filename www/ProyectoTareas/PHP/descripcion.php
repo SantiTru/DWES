@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
 echo "<div style='text-align: center; font-size: 30px; font-weight: bold; color: #0d0e0e;'><br><br>";
 echo "Hola, " . $_SESSION['usuario'] . ". Esta es la descripción de tu tarea: ";
 echo "</div><br><br>"; 

@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
 require "../PHP/Connex_BD/connexion.php";
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
