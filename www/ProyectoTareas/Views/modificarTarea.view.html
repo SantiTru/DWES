@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="../Styles/styleTareas.css" rel="stylesheet" />
+  </head>
+  <body>
+    <form method="POST">
+      <input type="hidden" name="idtarea" value="<?php echo $row['id']; ?>" />
+      <label>Título:</label><br /><br />
+      <input
+        type="text"
+        name="titulo"
+        value="<?php echo $row['titulo']; ?>"
+      /><br /><br />
+      <label>Descripción:</label><br /><br />
+      <textarea
+        name="descripcion"
+        id="descripcion"
+        rows="6"
+        cols="50"
+      ></textarea
+      ><br /><br />
+      <button type="submit">Guardar Cambios</button>
+    </form>
+    <br /><br />
+    <p>
+      <a class="a_bottom" href="contenido.php">Volver a la lista de tareas</a>
+      <br /><br />
+      <a class="a_bottom" href="logout.php">Cerrar sesión</a>
+    </p>
+    <script>
+      document.getElementById("descripcion").value =
+        "<?php echo $row['descripcion']; ?>";
+    </script>
+  </body>
+</html>

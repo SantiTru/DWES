@@ -6,6 +6,10 @@ if (!isset($_SESSION['usuario'])) {
     exit();
 }
 
+echo "<div style='text-align: center; font-size: 28px; font-weight: bold; color: #0d0e0e;'><br><br>";
+echo "Hola, " . $_SESSION['usuario'] . ". Aqui puedes agregar tus tareas.";
+echo "</div><br><br>";
+
 function agregarTarea()
 {
     require "../PHP/Connex_BD/connexion.php";
@@ -14,14 +18,13 @@ function agregarTarea()
     $descripcion = $_POST['descripcion'];
     $usuario = $_SESSION["usuario"];
 
-    // hacer control que el título y la descripción no estén vacíos y cumplan con los límites de longitud ademas que no tienen algo raro
     if (
         empty($titulo) || empty($descripcion) ||
         strlen($titulo) > 20 || strlen($descripcion) > 200 ||
         !preg_match('/^[A-Za-z0-9\s.,!?¿¡áéíóúÁÉÍÓÚñÑüÜ]+$/', $titulo) ||
         !preg_match('/^[A-Za-z0-9\s.,!?¿¡áéíóúÁÉÍÓÚñÑüÜ]+$/', $descripcion)
     ) {
-      echo "<body style='background-image: url(../Img/fondo_difuminado_login.jpg);'>";
+      echo "<body style='background-image: url(../Img/fondo_difuminado_login.jpg); background-repeat: no-repeat; background-size: cover;'>";
       echo "<div style='text-align: center;'>";
       echo "<p style='color: red; font-size: 28px; margin-top: 4%; margin-bottom: 0%;'>Los campos no pueden ir vacíos ni excederse del tamaño indicado.</p><br><br>";
       echo "<div style='margin-top: 20px;'>"; 
@@ -63,11 +66,11 @@ function agregarTarea()
             }
         }
     } catch (PDOException $e) {
-        // Manejar errores de la conexión PDO
+        
         echo "Error: " . $e->getMessage();
+    }finally {
+        $conn = null;
     }
-
-    $conn = null;
 }
 
 function mostrar()
@@ -78,9 +81,7 @@ function mostrar()
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     agregarTarea();
 } else {
-    echo "<div style='text-align: center; font-size: 30px; font-weight: bold; color: #0d0e0e;'><br><br>";
-    echo "Hola, " . $_SESSION['usuario'] . ". Aqui puedes agregar tus tareas.";
-    echo "</div><br><br>"; 
+    
     include '../Views/agregar.view.html';
 }
 ?>

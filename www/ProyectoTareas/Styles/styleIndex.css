@@ -11,6 +11,8 @@
   display: flex;
   height: 100%;
   background-image: url(../Img/fondo_difuminado_login.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .cont_centrar {
