@@ -37,30 +37,30 @@ function agregarTarea()
 
     try {
         $usuarioConsulta = "SELECT id FROM usuarios WHERE usuario = :usuario";
-        $stmtUsuario = $conn->prepare($usuarioConsulta);
-        $stmtUsuario->bindParam(':usuario', $usuario);
-        $stmtUsuario->execute();
+        $statementUsuario = $conn->prepare($usuarioConsulta);
+        $statementUsuario->bindParam(':usuario', $usuario);
+        $statementUsuario->execute();
 
-        if ($stmtUsuario->rowCount() > 0) {
-            $filaUsuario = $stmtUsuario->fetch(PDO::FETCH_ASSOC);
+        if ($statementUsuario->rowCount() > 0) {
+            $filaUsuario = $statementUsuario->fetch(PDO::FETCH_ASSOC);
             $idusuario = $filaUsuario['id'];
 
-            // Insertar tarea
+           
             $insertarT = "INSERT INTO tarea (titulo, descripcion) VALUES (:titulo, :descripcion)";
-            $stmtInsertarT = $conn->prepare($insertarT);
-            $stmtInsertarT->bindParam(':titulo', $titulo);
-            $stmtInsertarT->bindParam(':descripcion', $descripcion);
+            $statementInsertarT = $conn->prepare($insertarT);
+            $statementInsertarT->bindParam(':titulo', $titulo);
+            $statementInsertarT->bindParam(':descripcion', $descripcion);
 
-            if ($stmtInsertarT->execute()) {
+            if ($statementInsertarT->execute()) {
                 $idTarea = $conn->lastInsertId();
 
-                // Asignar tarea al usuario
+              
                 $asignaT = "INSERT INTO usuarios_tarea (tarea, usuario) VALUES (:idTarea, :idusuario)";
-                $stmtAsignaT = $conn->prepare($asignaT);
-                $stmtAsignaT->bindParam(':idTarea', $idTarea);
-                $stmtAsignaT->bindParam(':idusuario', $idusuario);
+                $statementAsignaT = $conn->prepare($asignaT);
+                $statementAsignaT->bindParam(':idTarea', $idTarea);
+                $statementAsignaT->bindParam(':idusuario', $idusuario);
 
-                if ($stmtAsignaT->execute()) {
+                if ($statementAsignaT->execute()) {
                     mostrar();
                 }
             }

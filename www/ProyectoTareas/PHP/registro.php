@@ -3,7 +3,7 @@ session_start();
 $errores = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verificar si todas las variables POST requeridas están definidas y no están vacías
+    
     if (
         isset($_POST['usuario']) &&
         isset($_POST['password']) && isset($_POST['password2']) &&
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password2 = hash('sha512', $_POST['password2']);
 
         if ($password == $password2) {
-            // Conexión a la base de datos y registro del usuario
+            
             try {
                 require './Connex_BD/connexion.php';
 
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     echo "<p style= 'text-align:center; margin-top: 2%; margin-bottom: 0%';><a href='../index.php' style='font-size: 20px; font-weight: bold; color: rgb(14, 14, 134);'>¡Vuelve a intentarlo!</a></p><br><br>";
                     return;
                 } else {
-                    // Registro del usuario en la base de datos
+                    
                     $statement = $conn->prepare('INSERT INTO usuarios (usuario, password) VALUES (:usuario, :password)');
                     $statement->execute(array(
                         ':usuario' => $usuario,

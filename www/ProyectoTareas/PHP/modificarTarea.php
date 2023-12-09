@@ -26,11 +26,11 @@ function modificar($conn)
                     INNER JOIN usuarios_tarea ON tarea.id = usuarios_tarea.tarea 
                     INNER JOIN usuarios ON usuarios_tarea.usuario = usuarios.id 
                     WHERE tarea.id = :idtarea AND usuarios.usuario = :usuario";
-            $stm = $conn->prepare($sql);
-            $stm->bindParam(":idtarea", $idtarea, PDO::PARAM_INT);
-            $stm->bindParam(":usuario", $_SESSION['usuario'], PDO::PARAM_STR);
-            $stm->execute();
-            $row = $stm->fetch(PDO::FETCH_ASSOC);
+            $statement = $conn->prepare($sql);
+            $statement->bindParam(":idtarea", $idtarea, PDO::PARAM_INT);
+            $statement->bindParam(":usuario", $_SESSION['usuario'], PDO::PARAM_STR);
+            $statement->execute();
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
 
             if (!$row) {
                 echo "<body style='background-image: url(../Img/fondo_difuminado_login.jpg); background-repeat: no-repeat; background-size: cover;'>";
@@ -45,17 +45,33 @@ function modificar($conn)
             $idtarea = $_POST['idtarea'];
             $titulo = $_POST['titulo'];
             $descripcion = $_POST['descripcion'];
+          
+            if (empty($titulo) || strlen($titulo) > 20) {
+                echo "<body style='background-image: url(../Img/fondo_difuminado_login.jpg); background-repeat: no-repeat; background-size: cover;'>";
+                echo "<br><br><p style='text-align: center; font-size: 20px; font-weight: bold; color: black;'>Los campos no pueden ir vacíos ni excederse del tamaño indicado.</p>";
+                echo "<div style='text-align: center;'><a href='contenido.php'; style='text-align: center; font-size: 18px; font-weight: bold; color: rgb(14, 14, 134)';>Volver a tus tareas</a></div>";
+                echo "<br><br>";
+              exit();
+            }
+          
+            if (empty($descripcion) || strlen($descripcion) > 200) {
+                echo "<body style='background-image: url(../Img/fondo_difuminado_login.jpg); background-repeat: no-repeat; background-size: cover;'>";
+                echo "<br><br><p style='text-align: center; font-size: 20px; font-weight: bold; color: black;'>Los campos no pueden ir vacíos ni excederse del tamaño indicado.</p>";
+                echo "<div style='text-align: center;'><a href='contenido.php'; style='text-align: center; font-size: 18px; font-weight: bold; color: rgb(14, 14, 134)';>Volver a tus tareas</a></div>";
+                echo "<br><br>";
+              exit();
+            }
 
             $sql = "UPDATE tarea 
                     SET titulo=:titulo, descripcion=:descripcion 
                     WHERE id=:idtarea AND id IN (SELECT tarea FROM usuarios_tarea WHERE usuario = (SELECT id FROM usuarios WHERE usuario = :usuario))";
-            $stm = $conn->prepare($sql);
-            $stm->bindParam(":titulo", $titulo, PDO::PARAM_STR);
-            $stm->bindParam(":descripcion", $descripcion, PDO::PARAM_STR);
-            $stm->bindParam(":idtarea", $idtarea, PDO::PARAM_INT);
-            $stm->bindParam(":usuario", $_SESSION['usuario'], PDO::PARAM_STR);
+            $statement = $conn->prepare($sql);
+            $statement->bindParam(":titulo", $titulo, PDO::PARAM_STR);
+            $statement->bindParam(":descripcion", $descripcion, PDO::PARAM_STR);
+            $statement->bindParam(":idtarea", $idtarea, PDO::PARAM_INT);
+            $statement->bindParam(":usuario", $_SESSION['usuario'], PDO::PARAM_STR);
 
-            if ($stm->execute()) {
+            if ($statement->execute()) {
                 include '../Views/tareaModificada.view.html';
                 exit();
             } 
