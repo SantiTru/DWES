@@ -1,0 +1,105 @@
+<?
+require_once "Clases/Estudiante.php";
+require_once "Clases/EstudianteGraduado.php";
+
+$estudiante = new Estudiante();
+$estudiante->setNombre("Javier");
+$estudiante->setEdad(23);
+$estudiante->setCurso("1DAW");
+$estudiante->AgregarNota(5);
+$estudiante->AgregarNota(5);
+$estudiante->AgregarNota(5);
+
+echo "Los datos del estudiante son: ";
+echo "<br />";
+echo $estudiante->datosEstudiante();
+echo "<br />";
+echo "La media del estudiante es: ";
+echo "<br />";
+echo $estudiante->ObtenerMedia();
+echo "<br />";
+echo "<br />";
+echo "<hr />";
+
+$estudiante = new Estudiante();
+$estudiante->setNombre("Lidia");
+$estudiante->setEdad(37);
+$estudiante->setCurso("1DAM");
+$estudiante->AgregarNota(10);
+$estudiante->AgregarNota(10);
+$estudiante->AgregarNota(10);
+
+echo "El nombre del estudiante es: ";
+echo "<br />";
+echo $estudiante->getNombre();
+echo "<br />";
+echo "La edad del estudiante es: ";
+echo "<br />";
+echo $estudiante->getEdad();
+echo "<br />";
+echo "El curso del estudiante es: ";
+echo "<br />";
+echo $estudiante->getCurso();
+echo "<br />";
+echo "La media del estudiante es: ";
+echo "<br />";
+echo $estudiante->ObtenerMedia();
+echo "<br />";
+echo "<br />";
+echo "<hr />";
+
+$graduado = new EstudianteGraduado();
+$graduado->setNombre("Lidia");
+$graduado->setEdad(37);
+$graduado->setCurso("2DAM");
+$graduado->AgregarNota(7);
+$graduado->AgregarNota(7);
+$graduado->AgregarNota(7);
+
+echo "El nombre del estudiante es: ";
+echo "<br />";
+echo $graduado->getNombre();
+echo "<br />";
+echo "La edad del estudiante es: ";
+echo "<br />";
+echo $graduado->getEdad();
+echo "<br />";
+echo "La media del estudiante es: ";
+echo "<br />";
+echo $graduado->ObtenerMedia();
+echo "<br />";
+echo "El nivel del estudiante es: ";
+echo "<br />";
+$graduado->setNivel("Postgrado");
+echo $graduado->getNivel();
+echo "<br />";
+echo "<br />";
+echo "<hr />";
+
+$graduado = new EstudianteGraduado("Javier", 23, "2DAW", []);
+$graduado->setNombre("Javier");
+$graduado->setEdad(23);
+$graduado->setCurso("2DAW");
+$graduado->AgregarNota(10);
+$graduado->AgregarNota(7);
+$graduado->AgregarNota(3);
+
+echo "El nombre del estudiante es: ";
+echo "<br />";
+echo $graduado->getNombre();
+echo "<br />";
+echo "La edad del estudiante es: ";
+echo "<br />";
+echo $graduado->getEdad();
+echo "<br />";
+echo "La media del estudiante es: ";
+echo "<br />";
+echo $graduado->ObtenerMedia();
+echo "<br />";
+echo "El nivel del estudiante es: ";
+echo "<br />";
+$graduado->setNivel("Postgrado");
+echo $graduado->getNivel();
+echo "<br />";
+echo "<br />";
+echo "<hr />";
