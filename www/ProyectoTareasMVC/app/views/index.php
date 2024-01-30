@@ -1,7 +1,6 @@
 <?php
 include "./header.php";
 include "./nav.php";
-
 include_once("../controllers/ToDoController.php");
 ?>
 
@@ -13,11 +12,11 @@ include_once("../controllers/ToDoController.php");
     <div>
       <?php
       if (isset($_POST['add_todo'])) {
-        $titulo = $_POST['topic'];  // Cambiado a 'titulo' para coincidir con el modelo
-        $descripcion = $_POST['todo'];  // Cambiado a 'descripcion' para coincidir con el modelo
+        $titulo = $_POST['topic'];  
+        $descripcion = $_POST['todo'];  
 
         $add_todo = new ToDoController();
-        $add_todo->todo_add($titulo, $descripcion);  // Cambiado a 'todo_add' para coincidir con el modelo
+        $add_todo->todo_add($titulo, $descripcion); 
       }
       ?>
 
