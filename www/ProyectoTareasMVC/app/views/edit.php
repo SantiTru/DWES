@@ -10,12 +10,12 @@
 ?>
 
 <div class="container">
-    <a href="index.php"><button class="btn btn-primary bck-btn">Back</button></a>
+    <a href="index.php"><button class="btn btn-primary">Volver</button></a>
     <div class="card">
-        <div class="card-header">
+        <div>
             Actualizar tarea
         </div>
-        <div class="card-body">
+        <div>
 
             <?php 
                 if(isset($_POST['todo_update'])){
@@ -30,12 +30,12 @@
 
             <form action="" method="POST">
                 <label for="Topic">Titulo : </label>
-                <input type="text" name="update_topic" value="<?= $todo['titulo']?>" id="" class="form-control">  
+                <input type="text" name="update_topic" value="<?= $todo['titulo']?>" id="">  
                 <br>
                 <label for="todo">Descripción : </label>
-                <textarea name="update_todo" class="form-control areatext"><?= $todo['descripcion']; ?></textarea>  
+                <textarea name="update_todo"><?= $todo['descripcion']; ?></textarea>  
                 <br>
-                <input type="submit" value="Update Todo" name="todo_update" class="btn btn-success">
+                <input type="submit" value="Actualizar tarea" name="todo_update" class="btn btn-success">
 
             </form>
         </div>

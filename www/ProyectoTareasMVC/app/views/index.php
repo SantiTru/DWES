@@ -9,8 +9,8 @@ include_once("../controllers/ToDoController.php");
 <div class="container">
 
   <div class="card">
-    <div class="card-header">Añadir tarea</div>
-    <div class="card-body">
+    <div>Añadir tarea</div>
+    <div>
       <?php
       if (isset($_POST['add_todo'])) {
         $titulo = $_POST['topic'];  // Cambiado a 'titulo' para coincidir con el modelo
@@ -35,14 +35,14 @@ include_once("../controllers/ToDoController.php");
 
   <hr>
 
-  <h2 class="text-center">Tareas del usuario</h2>
+  <h2>Tareas del usuario</h2>
 
   <?php
   if (isset($_POST['delete_todo'])) {
     $id = $_POST['delete_id'];
 
     $delete_todo = new ToDoController();
-    $delete_todo->todo_delete($id);  // Cambiado a 'todo_delete' para coincidir con el modelo
+    $delete_todo->todo_delete($id);
   }
   ?>
 
@@ -54,17 +54,19 @@ include_once("../controllers/ToDoController.php");
     foreach ($all_todos as $todo) {
     ?>
 
-      <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-          <div class="fw-bold"><?= $todo['titulo']; ?></div>
-          <?= $todo['descripcion']; ?>
-        </div>
-        <a href="edit.php?id=<?= $todo['id']; ?>"><button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</button></a> &nbsp;
-        <form action="" method="POST">
-          <input type="hidden" name="delete_id" value="<?= $todo['id']; ?>">
-          <button type="submit" name="delete_todo" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Delete </button>
-        </form>
-      </li>
+<li class="list-group-item">
+  <div>
+    <div><?= $todo['titulo']; ?></div>
+    <?= $todo['descripcion']; ?>
+  </div>
+  <div class="buttons-container">
+    <a href="edit.php?id=<?= $todo['id']; ?>" class="btn btn-warning">Editar</a>
+    <form action="" method="POST" class="delete-form">
+      <input type="hidden" name="delete_id" value="<?= $todo['id']; ?>">
+      <button type="submit" name="delete_todo" class="btn btn-danger">Borrar</button>
+    </form>
+  </div>
+</li>
 
 
     <?php
