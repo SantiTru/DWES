@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Atarea2</title>
-    <link href="./Style/style.css" rel="stylesheet" />
+    <link href="../../public/Style/style.css" rel="stylesheet" />
 </head>
 
 <body>
