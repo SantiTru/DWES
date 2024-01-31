@@ -40,8 +40,8 @@ class TareaView {
                                 <td><?php echo $row['titulo'] ?></td>
                                 <td><?php echo $row['descripcion'] ?></td>
                                 <td>
-                                    <a href="edit_task.php?id=<?php echo $row['id'] ?>" class="boton-editar">Editar</a>
-                                    <a href="delete_task.php?id=<?php echo $row['id'] ?>" class="boton-borrar">Borrar</a>
+                                    <a href="edit_task.php?id=<?php echo $row['id'] ?>" class="boton-editar"> Editar</a>
+                                    <a href="delete_task.php?id=<?php echo $row['id'] ?>" class="boton-borrar"> Borrar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

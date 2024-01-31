@@ -51,8 +51,8 @@ if (!empty($tareas)) {
         echo "<p>Descripción: " . $task['descripcion'] . "</p>";
         echo "<p>ID: " . $task['id'] . "</p>";
         // Agregar botones de editar y eliminar con enlaces a acciones.php
-        echo "<a href='acciones.php?action=editar&id={$task['id']}'>Editar</a>";
-        echo "<a href='acciones.php?action=eliminar&id={$task['id']}'>Eliminar</a>";
+        echo "<a href='acciones.php?action=editar&id={$task['id']}'>Editar </a>";
+        echo "<a href='acciones.php?action=eliminar&id={$task['id']}'> Borrar</a>";
         echo "</div>";
     }
 } else {

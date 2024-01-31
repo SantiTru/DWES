@@ -26,11 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head>
     <title>Registro de Usuario</title>
-    <link rel="stylesheet" href="loggin/estilos/estilo2.css">
+    <link rel="stylesheet" href="./public/Style/style.css">
 </head>
 <body>
     <?php
     $userView->showRegistrationForm();
+    include("./view/footer.php");
     ?>
 </body>
 </html>
