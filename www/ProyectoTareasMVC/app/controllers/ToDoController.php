@@ -1,26 +1,50 @@
 <?php
-include_once("../models/ToDoModel.php");
+class ToDoController {
 
-class ToDoController extends ToDoModel
-{
-  public function view_todos() {
-    return $this->all_todos();
+  private $model;
+  private $view;
+
+  public function __construct($model, $view) {
+    $this->model = $model;
+    $this->view = $view;
   }
 
-  public function add_todo($titulo, $descripcion) {
-    return $this->todo_add($titulo, $descripcion);
+  public function redirect($url) {
+    header("Location: $url");
+    exit();
   }
 
-  public function edit_todo($id) {
-    return $this->todo_edit($id);
+  public function get_todos($usuario_id) {
+    return $this->model->all_todos($usuario_id);
+  }
+ 
+  public function show_todo($id) {
+    $task= $this->model->all_todos($id);
+    $this-> view->show_todo($task['titulo'], $task['descripcion']);
   }
 
-  public function update_todo($id, $titulo, $descripcion) {
-    return  $this->todo_update($id, $titulo, $descripcion);
+  public function show_todo_form($id) {
+    $task= $this->model->all_todos($id);
+
+    $this->view->show_todo_form($id, $task['titulo'], $task['descripcion']);
+  }
+  public function add_todo($titulo, $descripcion, $usuario_id) {
+    $this->model->todo_add($titulo, $descripcion, $usuario_id);
+    $this->redirect('./views/contenido.php');
+  }
+
+  public function edit_todo($id, $titulo, $descripcion) {
+    $this->model->edit_todo($id, $titulo, $descripcion);
+    $this->redirect('./views/contenido.php');
   }
 
   public function delete_todo($id) {
-    return $this->todo_delete($id);
+    $this->model->delete_todo($id);
+    $this->redirect('./views/contenido.php');
+  }
+
+  public function value_id() {
+    return isset($_POST['id']) ? $_POST['id'] : null;
   }
 }
 ?>
