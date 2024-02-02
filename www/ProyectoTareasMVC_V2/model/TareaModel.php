@@ -10,8 +10,8 @@ class TareaModel {
     public function getTarea($usuario_id) {
 
         $query = "SELECT tarea.* FROM tarea
-                  JOIN usuarios_tarea ON tarea.id = usuarios_tarea.tarea
-                  WHERE usuarios_tarea.usuario = ?";
+                JOIN usuarios_tarea ON tarea.id = usuarios_tarea.tarea
+                WHERE usuarios_tarea.usuario = ?";
         $statement = $this->conexion->prepare($query);
         $statement->execute([$usuario_id]);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -92,3 +92,15 @@ class TareaModel {
         }
     }
 }
+/*
+! esto es una prueba de comentario 
+* esto es una prueba de comentario 
+? esto es una prueba de comentario 
+TODO: esto es una prueba de comentario 
+esto es una prueba de comentario */
+
+//! Un comentario normal
+//* Un comentario normal
+//? Un comentario normal
+//TODO: Un comentario normal
+// Un comentario normal
