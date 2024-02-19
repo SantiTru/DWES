@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 /*Route::get('productos',[ProductoController::class,'index']);
 Route::post('productos',[ProductoController::class,'store']);
 */
+
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group( function () {
+    Route::get('logout', [AuthController::class, 'logout']);
+    
 Route::resource('/productos',ProductoController::class);
+});
