@@ -25,16 +25,16 @@ if ($action == 'editar') {
     echo '<script>alert("Tarea eliminada");</script>';
     echo '<script>window.location.href = "index.php";</script>';
     exit();
-} elseif ($action == 'actualizar') {
+} elseif ($action == 'update') {
     
     if (isset($_POST['updateTarea'])) {
-        $id = $_POST['id'];
+        //$id = $_POST['id'];
         $titulo = $_POST['titulo'];
         $descripcion = $_POST['descripcion'];
 
         
         if (empty($titulo) || empty($descripcion)) {
-            echo '<script>alert("Es neceesario rellenar titulo y descripción");</script>';
+            echo '<script>alert("Es necesario rellenar titulo y descripción");</script>';
             echo '<script>window.location.href = "index.php";</script>';
             exit();
         }

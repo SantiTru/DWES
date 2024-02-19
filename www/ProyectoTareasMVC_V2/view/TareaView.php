@@ -63,9 +63,8 @@ class TareaView
         <div class="container">
             <div class="col_4">
                 <div class="card-body">
-                    <form action="acciones.php?action=actualizar" method="POST">
-
-                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+                <form action="acciones.php?action=update&id=<?php echo $id; ?>" method="POST">
+                <input type="hidden" name="update_task" value="1">
                         <div class="form-group">
                             <input type="text" name="titulo" value="<?php echo $titulo; ?>">
                         </div>
