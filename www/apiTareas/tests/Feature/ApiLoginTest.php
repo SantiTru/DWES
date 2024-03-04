@@ -48,6 +48,6 @@ class ApiLoginTest extends TestCase
 
         $response = $this->actingAs($user)->withToken($token)->getJson('api/logout');
         $response->assertStatus(200)
-                ->assertJson(['message' => 'Sesión cerrada. Bye!']);
+                ->assertJson(['message' => 'Sesión cerrada. Bye!']);    //testear que no pueda hacer get de tareas una vez hecho el logout
     }
 }
